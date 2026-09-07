@@ -1,0 +1,20 @@
+# OWASP Top 10 for LLM Applications — Compliance Mapping
+
+This document maps the Referral Management Copilot architecture against the OWASP Top 10 Risks for Large Language Model Applications.
+
+---
+
+## OWASP LLM Top 10 Mapping Matrix
+
+| OWASP Vulnerability | Risk Summary | Copilot Defense Mechanism | Implementation File |
+| :--- | :--- | :--- | :--- |
+| **LLM01: Prompt Injection** | Manipulating LLM via untrusted provider notes. | **Context Quarantine**: Free-text notes wrapped in passive XML blocks. | [quarantine.py](file:///home/megha/Documents/Virtusa/Capstone2/ReferralManagementCopilot/src/referral_copilot/context/quarantine.py) |
+| **LLM02: Sensitive Information Disclosure** | Leaking PII or API secrets in outputs/logs. | **Synthetic Data Guarantee**: 100% synthetic data; zero real PHI. Secrets excluded from trace JSON. | [config.py](file:///home/megha/Documents/Virtusa/Capstone2/ReferralManagementCopilot/src/referral_copilot/config.py) |
+| **LLM03: Supply Chain Risks** | Compromised third-party packages. | Minimal dependencies pinned in [pyproject.toml](file:///home/megha/Documents/Virtusa/Capstone2/ReferralManagementCopilot/pyproject.toml). | [pyproject.toml](file:///home/megha/Documents/Virtusa/Capstone2/ReferralManagementCopilot/pyproject.toml) |
+| **LLM04: Data and Model Poisoning** | Malicious policy text polluting RAG index. | Controlled indexing of validated local policy documents in `data/uploads/`. | [tool.py](file:///home/megha/Documents/Virtusa/Capstone2/ReferralManagementCopilot/src/referral_copilot/rag/tool.py) |
+| **LLM05: Improper Output Handling** | Unvalidated LLM text driving routing decisions. | **Pydantic Validation**: Structured JSON parsing at all agent handoff boundaries. | [schemas.py](file:///home/megha/Documents/Virtusa/Capstone2/ReferralManagementCopilot/src/referral_copilot/models/schemas.py) |
+| **LLM06: Excessive Agency** | LLM taking unintended autonomous actions. | **Supervisor Graph Topology**: Workflow transitions strictly governed by [router.py](file:///home/megha/Documents/Virtusa/Capstone2/ReferralManagementCopilot/src/referral_copilot/graph/router.py). | [router.py](file:///home/megha/Documents/Virtusa/Capstone2/ReferralManagementCopilot/src/referral_copilot/graph/router.py) |
+| **LLM07: System Prompt Leakage** | Exposing inner instructions to end user. | Separate user UI layer exposing structured execution status rather than raw prompts. | [app.py](file:///home/megha/Documents/Virtusa/Capstone2/ReferralManagementCopilot/ui/app.py) |
+| **LLM08: Vector and Embedding Weaknesses** | Low-relevance or manipulative RAG retrieval. | Explicit relevance threshold scoring ($>0.05$) in `ReferralPolicyRAGTool`. | [tool.py](file:///home/megha/Documents/Virtusa/Capstone2/ReferralManagementCopilot/src/referral_copilot/rag/tool.py) |
+| **LLM09: Misconfiguration** | Unsecured model endpoints or missing keys. | Centralized provider factory with explicit fallback handling in [factory.py](file:///home/megha/Documents/Virtusa/Capstone2/ReferralManagementCopilot/src/referral_copilot/llm/factory.py). | [factory.py](file:///home/megha/Documents/Virtusa/Capstone2/ReferralManagementCopilot/src/referral_copilot/llm/factory.py) |
+| **LLM10: Unbounded Consumption** | Infinite loop execution draining API token quota. | **Bounded Reflection**: Retries capped at `max_retries = 3` in [reflection.py](file:///home/megha/Documents/Virtusa/Capstone2/ReferralManagementCopilot/src/referral_copilot/agents/reflection.py). | [reflection.py](file:///home/megha/Documents/Virtusa/Capstone2/ReferralManagementCopilot/src/referral_copilot/agents/reflection.py) |

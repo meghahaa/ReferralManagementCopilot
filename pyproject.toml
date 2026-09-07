@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "referral-management-copilot"
+version = "1.0.0"
+description = "Multi-Agent Healthcare Referral Copilot on LangGraph with custom MCP, Tiered Memory, Context Engineering, and Agentic RAG."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "pydantic>=2.0",
+    "langgraph>=0.2.0",
+    "langchain-core>=0.3.0",
+    "mcp>=1.0.0",
+    "python-dotenv>=1.0.0",
+    "pytest>=7.0.0"
+]
+
+[project.optional-dependencies]
+live = [
+    "langchain-google-genai",
+    "langchain-groq"
+]
+ui = [
+    "streamlit"
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]

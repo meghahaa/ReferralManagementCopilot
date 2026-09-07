@@ -1,0 +1,19 @@
+{
+  "rules_version": "1.0",
+  "active_coverage_required": true,
+  "supported_plans": [
+    "Apex Health Plan",
+    "Beacon Community Care",
+    "Crestview Health"
+  ],
+  "requires_prior_authorization": [
+    "Pediatric Neurology",
+    "Cardiology MRI",
+    "Orthopedic Surgery"
+  ],
+  "policy_thresholds": {
+    "max_referral_age_days": 90,
+    "urgent_turnaround_hours": 24,
+    "routine_turnaround_days": 14
+  }
+}

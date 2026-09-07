@@ -1,0 +1,74 @@
+[
+  {
+    "provider_id": "PRV-101",
+    "name": "Dr. Marcus Vance, MD (Synthetic)",
+    "npi": "1992837461",
+    "specialty": "Internal Medicine",
+    "clinic_name": "Metro Primary Care",
+    "phone": "555-0101",
+    "network_affinity": "Apex Health Plan"
+  },
+  {
+    "provider_id": "PRV-102",
+    "name": "Dr. Elena Rostova, MD (Synthetic)",
+    "npi": "1883726450",
+    "specialty": "Pediatrics",
+    "clinic_name": "City Children Clinic",
+    "phone": "555-0102",
+    "network_affinity": "Beacon Community Care"
+  },
+  {
+    "provider_id": "PRV-103",
+    "name": "Dr. Arthur Pendelton, MD (Synthetic)",
+    "npi": "1774615349",
+    "specialty": "Family Medicine",
+    "clinic_name": "Westside Health Group",
+    "phone": "555-0103",
+    "network_affinity": "Apex Health Plan"
+  },
+  {
+    "provider_id": "PRV-104",
+    "name": "Dr. Clara Oswald, MD (Synthetic)",
+    "npi": "1665504238",
+    "specialty": "Geriatrics",
+    "clinic_name": "Golden Valley Clinic",
+    "phone": "555-0104",
+    "network_affinity": "Crestview Health"
+  },
+  {
+    "provider_id": "PRV-105",
+    "name": "Dr. Henry Wu, MD (Synthetic)",
+    "npi": "1556493127",
+    "specialty": "Internal Medicine",
+    "clinic_name": "Downtown Health Plaza",
+    "phone": "555-0105",
+    "network_affinity": "Apex Health Plan"
+  },
+  {
+    "provider_id": "PRV-106",
+    "name": "Dr. Samantha Carter, MD (Synthetic)",
+    "npi": "1447382016",
+    "specialty": "Internal Medicine",
+    "clinic_name": "Starlight Health Center",
+    "phone": "555-0106",
+    "network_affinity": "Apex Health Plan"
+  },
+  {
+    "provider_id": "PRV-107",
+    "name": "Dr. Daniel Jackson, MD (Synthetic)",
+    "npi": "1338271905",
+    "specialty": "Family Practice",
+    "clinic_name": "Suburban Medical Clinic",
+    "phone": "555-0107",
+    "network_affinity": "Apex Health Plan"
+  },
+  {
+    "provider_id": "PRV-108",
+    "name": "Dr. Janet Fraiser, MD (Synthetic)",
+    "npi": "1229160894",
+    "specialty": "Dermatology",
+    "clinic_name": "Apex Skin Institute",
+    "phone": "555-0108",
+    "network_affinity": "Apex Health Plan"
+  }
+]

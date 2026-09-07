@@ -1,0 +1,50 @@
+[
+  {
+    "id": "Q-001",
+    "referral_id": "REF-1001",
+    "query": "Process referral REF-1001 for patient PAT-001 needing routine Cardiology consultation for hypertension.",
+    "expected_outcome": "COMPLETED_SCHEDULED"
+  },
+  {
+    "id": "Q-002",
+    "referral_id": "REF-1002",
+    "query": "Evaluate out-of-network referral REF-1002 for patient PAT-002 seeking specialized Pediatric Neurology.",
+    "expected_outcome": "OUT_OF_NETWORK_AUTH_REQUIRED"
+  },
+  {
+    "id": "Q-003",
+    "referral_id": "REF-1003",
+    "query": "Handle urgent referral REF-1003 for patient PAT-003 with acute chest pain requiring priority scheduling within 24 hours.",
+    "expected_outcome": "EXPEDITED_SCHEDULED"
+  },
+  {
+    "id": "Q-004",
+    "referral_id": "REF-1004",
+    "query": "Check eligibility and process referral REF-1004 for patient PAT-004 whose insurance plan coverage has expired.",
+    "expected_outcome": "INELIGIBLE_REJECTED"
+  },
+  {
+    "id": "Q-005",
+    "referral_id": "REF-1005",
+    "query": "Process incomplete referral REF-1005 for patient PAT-005 lacking required clinical notes and diagnostic codes.",
+    "expected_outcome": "INTAKE_INCOMPLETE"
+  },
+  {
+    "id": "Q-006",
+    "referral_id": "REF-1006",
+    "query": "Query referral policy for prior authorization requirements for advanced cardiac MRI on referral REF-1006.",
+    "expected_outcome": "POLICY_LOOKUP_COMPLETED"
+  },
+  {
+    "id": "Q-007",
+    "referral_id": "REF-1007",
+    "query": "Match an in-network Orthopedic Surgery specialist for patient PAT-007 with lumbar spine radiculopathy.",
+    "expected_outcome": "MATCH_FOUND"
+  },
+  {
+    "id": "Q-008",
+    "referral_id": "REF-1008",
+    "query": "Schedule available appointment slot for referral REF-1008 with Dr. Sarah Jenkins, MD.",
+    "expected_outcome": "APPOINTMENT_CONFIRMED"
+  }
+]

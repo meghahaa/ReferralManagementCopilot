@@ -1,0 +1,20 @@
+GENERAL PRIOR AUTHORIZATION & NETWORK COMPLIANCE MANUAL (REF-POLICY-002)
+
+SECTION A: IN-NETWORK VS OUT-OF-NETWORK REFERRALS
+1. All specialist referrals must default to Primary In-Network specialists listed in the Apex Health Network directory.
+2. An Out-of-Network (OON) referral is permitted ONLY IF:
+   a) No in-network specialist exists for the required sub-specialty (e.g., Pediatric Neurology).
+   b) In-network specialist wait time exceeds 30 calendar days for routine cases.
+   c) Approved continuity of care exception is on file.
+3. If an OON referral is requested without pre-authorization, the Referral Copilot supervisor MUST route the case to OUT_OF_NETWORK_AUTH_REQUIRED state.
+
+SECTION B: INCOMPLETE REFERRAL INTAKE
+1. A referral is deemed INCOMPLETE if any of the following mandatory fields are missing:
+   - Target Specialty
+   - ICD-10 Diagnosis Code
+   - Primary Reason for Referral
+2. Incomplete referrals must be routed back to INTAKE agent for field extraction or provider clarification.
+
+SECTION C: EVIDENCED REFLECTION & RE-PLANNING
+1. If specialist matching fails to find an available slot with the primary candidate specialist, the matching agent must reflect on alternative in-network providers within a 25-mile radius.
+2. Maximum reflection retries: 3 attempts before marking status as UNABLE_TO_MATCH.

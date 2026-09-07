@@ -1,0 +1,16 @@
+{
+  "network_version": "2026.1",
+  "primary_network": "Apex Health Plan",
+  "in_network_tier_1": [
+    "Apex Health Plan",
+    "Apex Skin Center",
+    "Heart & Vascular Center",
+    "Emergency Heart Center",
+    "Orthopedic & Spine Institute"
+  ],
+  "out_of_network_override_conditions": [
+    "NO_IN_NETWORK_SPECIALIST_AVAILABLE_WITHIN_50_MILES",
+    "URGENT_LIFE_THREATENING_CONDITION",
+    "CONTINUITY_OF_CARE_EXCEPTION"
+  ]
+}

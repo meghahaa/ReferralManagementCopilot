@@ -1,0 +1,21 @@
+CLINICAL POLICY DIRECTIVE: CARDIOLOGY REFERRALS & PRIOR AUTHORIZATION (POLICY-CARD-2026)
+
+1. OVERVIEW
+This policy outlines medical necessity and network referral criteria for adult Cardiology consults within Apex Health Network.
+
+2. ROUTINE CARDIOLOGY CONSULTATIONS
+- Indication: Essential hypertension resistant to 2+ anti-hypertensive medications, dyslipidemia with high ASCVD risk, mild stable angina.
+- Requirements: Completed primary care intake, baseline ECG within 60 days, serum creatinine, and lipid panel.
+- Prior Authorization: NOT required for routine in-network consults.
+
+3. ADVANCED CARDIAC DIAGNOSTICS & MRI
+- Indication: Suspected cardiomyopathy, myocardial viability assessment, complex congenital heart disease.
+- Requirements: Prior Echocardiogram report, recent Cardiology specialist recommendation.
+- Prior Authorization: MANDATORY PRIOR AUTHORIZATION REQUIRED. Submission of CPT code 75561 requires documentation of non-diagnostic echocardiogram.
+
+4. URGENT / EXPEDITED REFERRALS
+- Criteria: Unstable angina, acute onset congestive heart failure symptoms, troponin elevation without ST elevation.
+- SLA: Referral copilot must triage and schedule within 24 hours. Emergency cases (STEMI, acute collapse) must be directed immediately to the Emergency Department (911).
+
+5. OUT-OF-NETWORK CARDIOLOGY EXCEPTIONS
+- Out-of-network consults require prior authorization approval unless patient is experiencing acute chest pain during travel outside covered zip codes.

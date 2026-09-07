@@ -1,0 +1,14 @@
+{
+  "ac_id": "AC-12",
+  "timestamp": "2026-09-06T11:52:02.868620",
+  "referral_id": "REF-1007",
+  "status": "UNABLE_TO_MATCH",
+  "retry_count": 1,
+  "reflection_result": {
+    "needs_replan": true,
+    "proposed_action": "Expand search radius and retry matching with secondary in-network providers.",
+    "reflection_notes": "Reflection Attempt 1: Initiating bounded self-healing recovery path.",
+    "retry_count": 1
+  },
+  "next_step": "matching"
+}

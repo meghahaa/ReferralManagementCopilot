@@ -1,0 +1,99 @@
+[
+  {
+    "specialist_id": "SPC-201",
+    "name": "Dr. Sarah Jenkins, MD (Synthetic)",
+    "npi": "1112223334",
+    "specialty": "Cardiology",
+    "sub_specialty": "General Cardiology & Echocardiography",
+    "network_status": "IN_NETWORK",
+    "accepted_insurances": ["Apex Health Plan", "Beacon Community Care"],
+    "clinic_location": "Heart & Vascular Center, 100 Main St, Suite 400",
+    "zip_code": "90210",
+    "rating": 4.9,
+    "available_slots": [
+      "2026-09-10T09:00:00Z",
+      "2026-09-10T11:30:00Z",
+      "2026-09-11T14:00:00Z"
+    ]
+  },
+  {
+    "specialist_id": "SPC-202",
+    "name": "Dr. Aris Thorne, MD (Synthetic)",
+    "npi": "2223334445",
+    "specialty": "Pediatric Neurology",
+    "sub_specialty": "Epilepsy & Seizure Disorders",
+    "network_status": "OUT_OF_NETWORK",
+    "accepted_insurances": ["University Specialty Network"],
+    "clinic_location": "Children Neurological Institute, 500 Oak Ave",
+    "zip_code": "90211",
+    "rating": 4.8,
+    "available_slots": [
+      "2026-09-15T10:00:00Z",
+      "2026-09-16T13:00:00Z"
+    ]
+  },
+  {
+    "specialist_id": "SPC-203",
+    "name": "Dr. Richard Webber, MD (Synthetic)",
+    "npi": "3334445556",
+    "specialty": "Cardiology",
+    "sub_specialty": "Interventional Cardiology & Acute Care",
+    "network_status": "IN_NETWORK",
+    "accepted_insurances": ["Apex Health Plan"],
+    "clinic_location": "Emergency Heart Center, 200 Hospital Way",
+    "zip_code": "90212",
+    "rating": 4.95,
+    "available_slots": [
+      "2026-09-07T08:00:00Z",
+      "2026-09-07T10:00:00Z",
+      "2026-09-07T12:00:00Z"
+    ]
+  },
+  {
+    "specialist_id": "SPC-204",
+    "name": "Dr. Derek Shepherd, MD (Synthetic)",
+    "npi": "4445556667",
+    "specialty": "Orthopedics",
+    "sub_specialty": "Spine Surgery & Lumbar Radiculopathy",
+    "network_status": "IN_NETWORK",
+    "accepted_insurances": ["Apex Health Plan", "Crestview Health"],
+    "clinic_location": "Orthopedic & Spine Institute, 300 Wellness Blvd",
+    "zip_code": "90215",
+    "rating": 4.85,
+    "available_slots": [
+      "2026-09-12T09:30:00Z",
+      "2026-09-14T15:00:00Z"
+    ]
+  },
+  {
+    "specialist_id": "SPC-205",
+    "name": "Dr. Miranda Bailey, MD (Synthetic)",
+    "npi": "5556667778",
+    "specialty": "Gastroenterology",
+    "sub_specialty": "Hepatology & Endoscopy",
+    "network_status": "IN_NETWORK",
+    "accepted_insurances": ["Apex Health Plan"],
+    "clinic_location": "Digestive Health Center, 400 Medical Plaza",
+    "zip_code": "90210",
+    "rating": 4.7,
+    "available_slots": [
+      "2026-09-11T10:00:00Z"
+    ]
+  },
+  {
+    "specialist_id": "SPC-206",
+    "name": "Dr. Arizona Robbins, MD (Synthetic)",
+    "npi": "6667778889",
+    "specialty": "Dermatology",
+    "sub_specialty": "Medical Dermatology & Psoriasis",
+    "network_status": "IN_NETWORK",
+    "accepted_insurances": ["Apex Health Plan"],
+    "clinic_location": "Apex Skin Center, 150 Medical Drive",
+    "zip_code": "90210",
+    "rating": 4.9,
+    "available_slots": [
+      "2026-09-08T09:00:00Z",
+      "2026-09-08T11:00:00Z"
+    ]
+  }
+]
