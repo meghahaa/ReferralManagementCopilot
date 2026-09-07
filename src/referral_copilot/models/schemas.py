@@ -1,6 +1,6 @@
 """Pydantic Domain Models and Handoff Schemas for Referral Management Copilot."""
 
-from datetime import datetime
+from datetime import datetime, timezone
 from enum import Enum
 from typing import List, Optional, Dict, Any
 from pydantic import BaseModel, Field
@@ -22,6 +22,7 @@ class ReferralStatus(str, Enum):
     NEW = "NEW"
     INTAKE_COMPLETE = "INTAKE_COMPLETE"
     INTAKE_INCOMPLETE = "INTAKE_INCOMPLETE"
+    NEEDS_INFO = "NEEDS_INFO"
     ELIGIBLE = "ELIGIBLE"
     INELIGIBLE = "INELIGIBLE"
     MATCHED = "MATCHED"
@@ -47,7 +48,7 @@ class Referral(BaseModel):
         description="Quarantined free-text note from referring provider"
     )
     status: ReferralStatus = Field(default=ReferralStatus.NEW)
-    created_at: str = Field(default_factory=lambda: datetime.utcnow().isoformat())
+    created_at: str = Field(default_factory=lambda: datetime.now(timezone.utc).isoformat())
 
 
 class Patient(BaseModel):
@@ -132,6 +133,13 @@ class AgentDecision(BaseModel):
     confidence: float = Field(default=1.0)
 
 
+class PolicyLookupDecision(BaseModel):
+    """Structured decision for on-demand referral-policy retrieval."""
+    should_lookup: bool
+    query: str
+    reasoning: str = ""
+
+
 class ReflectionResult(BaseModel):
     """Structured result from Reflection / Self-Healing Agent."""
     needs_replan: bool
@@ -150,7 +158,7 @@ class RAGQueryResult(BaseModel):
 
 class MCPToolCallRecord(BaseModel):
     """Evidence record for an MCP Tool invocation."""
-    timestamp: str = Field(default_factory=lambda: datetime.utcnow().isoformat())
+    timestamp: str = Field(default_factory=lambda: datetime.now(timezone.utc).isoformat())
     tool_name: str
     input_params: Dict[str, Any]
     output_data: Any

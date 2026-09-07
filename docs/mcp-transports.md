@@ -20,7 +20,7 @@ The MCP server implemented in [server.py](file:///home/megha/Documents/Virtusa/C
 
 ## 2. Adapter Layer Integration
 
-The agent host consumes MCP tools through `langchain-mcp-adapters` wrapped in [client.py](file:///home/megha/Documents/Virtusa/Capstone2/ReferralManagementCopilot/src/referral_copilot/mcp/client.py):
+The agent host consumes MCP tools through `langchain-mcp-adapters` wrapped in [client.py](file:///home/megha/Documents/Virtusa/Capstone2/ReferralManagementCopilot/src/referral_copilot/mcp/client.py). The adapter launches the custom server as a separate stdio process for every tool session:
 ```python
 # Invocation Pattern
 mcp_client = MCPClientAdapter()
@@ -28,3 +28,5 @@ result = mcp_client.invoke_eligibility_check(patient_id="PAT-001")
 ```
 
 All invocations generate committed audit logs in [evidence/AC-10_mcp_invocation.json](file:///home/megha/Documents/Virtusa/Capstone2/ReferralManagementCopilot/evidence/AC-10_mcp_invocation.json).
+
+The repository also contains a raw MCP SDK compatibility path because the bundled offline SDK may be older than the installed adapter package. This fallback still performs MCP initialization and JSON-RPC tool/resource calls over stdio; it does not import or call server tool functions directly.

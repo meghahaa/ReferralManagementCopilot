@@ -3,7 +3,7 @@
 import json
 import pytest
 import tempfile
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
 from referral_copilot.memory.tiered import TieredMemoryStore
 from referral_copilot.config import settings
@@ -45,7 +45,7 @@ def test_ac_07_cross_session_memory_persistence():
         # 4. Generate structured evidence log artifact for repo commit
         evidence_log = {
             "ac_id": "AC-07",
-            "timestamp": datetime.utcnow().isoformat(),
+            "timestamp": datetime.now(timezone.utc).isoformat(),
             "test_status": "PASSED",
             "session_a": {
                 "session_id": session_a_id,

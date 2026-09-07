@@ -1,0 +1,56 @@
+image: python:3.12-slim
+
+stages:
+  - test
+  - evaluate
+  - build
+
+variables:
+  PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
+  PYTHONDONTWRITEBYTECODE: "1"
+  PYTHONUNBUFFERED: "1"
+
+cache:
+  key: "$CI_COMMIT_REF_SLUG"
+  paths:
+    - .cache/pip
+
+before_script:
+  - python --version
+  - python -m pip install --upgrade pip
+  - python -m pip install -r requirements.txt
+  - python -m pip install --no-deps -e .
+
+test:
+  stage: test
+  script:
+    - python scripts/seed_data.py
+    - python -m pytest tests/ -v
+
+evaluate:
+  stage: evaluate
+  script:
+    - python scripts/index_rag.py
+    - python evals/eval_pipeline.py
+    - python scripts/run_demo.py REF-1001
+  artifacts:
+    when: always
+    paths:
+      - evidence/
+    expire_in: 1 week
+
+docker:
+  stage: build
+  image: docker:27
+  services:
+    - name: docker:27-dind
+      command: ["--tls=false"]
+  variables:
+    DOCKER_HOST: tcp://docker:2375
+    DOCKER_TLS_CERTDIR: ""
+  before_script: []
+  script:
+    - docker build --pull -t "$CI_REGISTRY_IMAGE:$CI_COMMIT_SHA" .
+  rules:
+    - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'

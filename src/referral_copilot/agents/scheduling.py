@@ -5,9 +5,11 @@ expediting urgent referrals.
 """
 
 import uuid
-from datetime import datetime
+from datetime import datetime, timezone
 from referral_copilot.graph.state import ReferralState
 from referral_copilot.mcp.client import MCPClientAdapter
+from referral_copilot.models.schemas import SchedulingResult
+from referral_copilot.llm.runtime import invoke_structured, live_status_log
 
 
 def scheduling_agent_node(state: ReferralState) -> ReferralState:
@@ -35,11 +37,24 @@ def scheduling_agent_node(state: ReferralState) -> ReferralState:
         state["logs"] = [{
             "step": "SCHEDULING_AGENT",
             "status": "NO_SLOTS",
-            "timestamp": datetime.utcnow().isoformat()
+            "timestamp": datetime.now(timezone.utc).isoformat()
         }]
         return state
 
-    selected_slot = slots[0]
+    fallback = SchedulingResult(
+        referral_id=ref_id,
+        specialist_id=spec_id,
+        appointment_slot=slots[0],
+        status="PENDING",
+    )
+    selected, live, llm_error = invoke_structured(
+        SchedulingResult,
+        "You schedule a referral using only the supplied available slots. Select exactly one slot "
+        "and never invent a time.",
+        f"Referral: {ref_id}\nUrgency: {urgency}\nSpecialist: {spec_id}\nAvailable slots: {slots}",
+        fallback=fallback,
+    )
+    selected_slot = selected.appointment_slot if selected.appointment_slot in slots else slots[0]
     booking_id = f"BOOK-{uuid.uuid4().hex[:8].upper()}"
 
     is_urgent = (urgency == "URGENT")
@@ -62,6 +77,7 @@ def scheduling_agent_node(state: ReferralState) -> ReferralState:
         "status": final_status,
         "booking_id": booking_id,
         "slot": selected_slot,
-        "timestamp": datetime.utcnow().isoformat()
+        "timestamp": datetime.now(timezone.utc).isoformat(),
+        **live_status_log(live, llm_error),
     }]
     return state

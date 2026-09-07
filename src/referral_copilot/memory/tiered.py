@@ -6,7 +6,7 @@ Satisfies AC-07: Persistent cross-session recall backed by local SQLite storage.
 
 import sqlite3
 import uuid
-from datetime import datetime
+from datetime import datetime, timezone
 from typing import List, Dict, Any, Optional
 from pathlib import Path
 from referral_copilot.config import settings
@@ -58,7 +58,7 @@ class TieredMemoryStore:
     ) -> str:
         """Writes a durable fact into long-term cross-session memory store."""
         fact_id = f"FACT-{uuid.uuid4().hex[:8]}"
-        now = datetime.utcnow().isoformat()
+        now = datetime.now(timezone.utc).isoformat()
 
         conn = sqlite3.connect(self.db_path)
         cursor = conn.cursor()
@@ -100,7 +100,7 @@ class TieredMemoryStore:
             return None
 
         fact_id, sess_id, cat, k, val, imp, created = row
-        now = datetime.utcnow().isoformat()
+        now = datetime.now(timezone.utc).isoformat()
 
         cursor.execute(
             "UPDATE memory_facts SET last_accessed_at = ?, access_count = access_count + 1 WHERE fact_id = ?",

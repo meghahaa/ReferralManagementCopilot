@@ -25,10 +25,12 @@ def route_next(state: ReferralState) -> str:
     if next_step == "end" or status in [
         "INELIGIBLE",
         "INTAKE_INCOMPLETE",
+        "NEEDS_INFO",
         "OUT_OF_NETWORK_PENDING_AUTH",
         "SCHEDULED",
         "EXPEDITED_SCHEDULED",
-        "FAILED"
+        "FAILED",
+        "POLICY_LOOKUP_COMPLETE",
     ]:
         return "__end__"
 

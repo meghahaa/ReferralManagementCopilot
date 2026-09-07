@@ -1,22 +1,13 @@
 {
   "ac_id": "AC-07",
-  "timestamp": "2026-09-06T11:52:02.848948",
-  "test_status": "PASSED",
-  "session_a": {
-    "session_id": "SESSION-ALPHA-101",
-    "fact_stored": "PAT-003_contrast_allergy",
-    "value": "Severe reaction to iodine contrast agents"
-  },
-  "session_b": {
-    "session_id": "SESSION-BETA-202",
-    "recalled_fact": {
-      "fact_id": "FACT-a59614f7",
-      "session_id": "SESSION-ALPHA-101",
-      "category": "PATIENT_CLINICAL_PREFERENCE",
-      "key": "PAT-003_contrast_allergy",
-      "value": "Severe reaction to iodine contrast agents",
-      "importance_score": 0.95,
-      "created_at": "2026-09-06T11:52:02.845875"
-    }
+  "timestamp": "2026-09-07T10:52:39.832733+00:00",
+  "recalled_fact": {
+    "fact_id": "FACT-c1b18f9b",
+    "session_id": "SESS-101",
+    "category": "PATIENT_PREFERENCE",
+    "key": "PAT-001_language",
+    "value": "English",
+    "importance_score": 0.8,
+    "created_at": "2026-09-06T11:20:56.674385"
   }
 }

@@ -6,7 +6,7 @@ Retrieved inside graph loops on demand.
 
 import json
 import re
-from datetime import datetime
+from datetime import datetime, timezone
 from typing import List, Dict, Any, Optional
 from pathlib import Path
 from referral_copilot.config import settings
@@ -86,7 +86,7 @@ class ReferralPolicyRAGTool:
         evidence_file = self.evidence_dir / "AC-11_agentic_rag.json"
         log_entry = {
             "ac_id": "AC-11",
-            "timestamp": datetime.utcnow().isoformat(),
+            "timestamp": datetime.now(timezone.utc).isoformat(),
             "query": result.query,
             "relevance_score": result.relevance_score,
             "policy_source": result.policy_source,

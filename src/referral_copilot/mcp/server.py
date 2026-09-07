@@ -5,6 +5,7 @@ and 1 resource (referral_policy://cardiology). Supports both MCP 1.x and MCP 2.x
 """
 
 import json
+import logging
 from pathlib import Path
 
 try:
@@ -33,6 +34,9 @@ except (ImportError, ModuleNotFoundError):
 
             def run(self):
                 pass
+
+# MCP request lifecycle messages are protocol diagnostics, not application errors.
+logging.getLogger("mcp.server.lowlevel.server").setLevel(logging.ERROR)
 
 BASE_DIR = Path(__file__).resolve().parent.parent.parent.parent
 DATA_DIR = BASE_DIR / "data"
@@ -129,7 +133,7 @@ def specialist_availability(specialist_id: str) -> str:
     })
 
 
-@mcp.resource("referral_policy://cardiology")
+@mcp.resource("referral-policy://cardiology")
 def get_cardiology_policy() -> str:
     """Returns official clinical policy documentation for Cardiology referrals."""
     policy_file = DATA_DIR / "uploads" / "cardiology_policy.txt"

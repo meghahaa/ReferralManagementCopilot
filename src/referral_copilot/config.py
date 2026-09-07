@@ -14,6 +14,7 @@ class Settings:
     """Centralized Settings class for LLM, database, and system configurations."""
 
     def __init__(self):
+        self.base_dir: Path = BASE_DIR
         self.llm_provider: str = os.getenv("LLM_PROVIDER", "gemini").lower()
 
         # Gemini settings

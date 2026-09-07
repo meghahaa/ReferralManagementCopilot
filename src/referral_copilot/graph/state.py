@@ -35,6 +35,8 @@ class ReferralState(TypedDict, total=False):
 
     # Knowledge Retrieval & Reflection (AC-11, AC-12)
     rag_docs: List[Dict[str, Any]]
+    memory_facts: List[Dict[str, Any]]
+    policy_lookup_requested: bool
     reflection: Optional[Dict[str, Any]]
     retry_count: int
 

@@ -1,7 +1,7 @@
 {
   "ac_id": "AC-05",
-  "thread_id": "thread-pause-resume-test-101",
+  "timestamp": "2026-09-07T10:52:39.820973+00:00",
+  "thread_id": "evidence-checkpoint-thread",
   "status": "PASSED",
-  "checkpoint_retrieved_status": "SCHEDULED",
-  "referral_id": "REF-1001"
+  "checkpoint_status": "SCHEDULED"
 }

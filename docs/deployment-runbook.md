@@ -10,10 +10,17 @@ Step-by-step procedures for deploying, configuring, and operating the Referral M
 # 1. Clone repository and navigate to root directory
 cd ReferralManagementCopilot
 
-# 2. Copy configuration template
+# 2. Create and activate a virtual environment
+python3 -m venv .venv
+source .venv/bin/activate
+
+# 3. Install pinned dependencies and the package
+make install
+
+# 4. Copy configuration template
 cp .env.example .env
 
-# 3. Configure provider & API keys in .env
+# 5. Configure provider & API keys in .env
 # Set LLM_PROVIDER=gemini or LLM_PROVIDER=groq
 # Set GEMINI_API_KEY or GROQ_API_KEY
 ```
@@ -24,25 +31,37 @@ cp .env.example .env
 
 ```bash
 # Validate synthetic datasets
-python scripts/seed_data.py
+make validate
 
 # Index RAG clinical policy documents
-python scripts/index_rag.py
+make index
 
 # Run full automated test suite
-python scripts/generate_evidence.py
-pytest tests/
+make evidence
+make test
 
 # Execute end-to-end referral workflow demo
-python scripts/run_demo.py REF-1001
+make demo
 
 # Launch Streamlit interactive web interface
-streamlit run ui/app.py
+make ui
 ```
+
+## 3. Docker
+
+```bash
+cp .env.example .env
+# Add a Gemini or Groq key to .env for live model calls.
+make docker-build
+make docker-run
+```
+
+The container listens on `http://localhost:8501`. It excludes `.env`, local
+databases, and the deprecated `vendor/` directory.
 
 ---
 
-## 3. Operational Troubleshooting
+## 4. Operational Troubleshooting
 
 | Symptom | Cause | Solution |
 | :--- | :--- | :--- |

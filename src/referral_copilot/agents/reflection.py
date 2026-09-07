@@ -5,10 +5,11 @@ low confidence outputs, or unavailable specialist slots.
 """
 
 import json
-from datetime import datetime
+from datetime import datetime, timezone
 from referral_copilot.config import settings
 from referral_copilot.graph.state import ReferralState
 from referral_copilot.models.schemas import ReflectionResult
+from referral_copilot.llm.runtime import invoke_structured, live_status_log
 
 
 def reflection_agent_node(state: ReferralState) -> ReferralState:
@@ -29,16 +30,25 @@ def reflection_agent_node(state: ReferralState) -> ReferralState:
     max_retries = settings.max_retries
 
     if retry_count > max_retries:
-        state["reflection"] = {
-            "needs_replan": False,
-            "proposed_action": "TERMINATE_FAILED",
-            "reflection_notes": f"Exceeded maximum reflection retry threshold ({max_retries}). Halting loop.",
-            "retry_count": retry_count
-        }
+        fallback = ReflectionResult(
+            needs_replan=False,
+            proposed_action="TERMINATE_FAILED",
+            reflection_notes=f"Exceeded maximum reflection retry threshold ({max_retries}). Halting loop.",
+            retry_count=retry_count,
+        )
+        result, live, llm_error = invoke_structured(
+            ReflectionResult,
+            "You are a bounded referral recovery reviewer. Never exceed the retry limit and choose only "
+            "matching, scheduling, intake, or termination.",
+            f"Current status: {curr_status}; retry count: {retry_count}; max retries: {max_retries}",
+            fallback=fallback,
+        )
+        state["reflection"] = result.model_dump()
+        state["reflection"].update(live_status_log(live, llm_error))
         state["status"] = "FAILED"
         state["next_step"] = "end"
     else:
-        # Re-plan strategy based on failure status
+        # Re-plan strategy based on failure status, with the model choosing the explanation.
         if curr_status == "UNABLE_TO_MATCH":
             proposed = "Expand search radius and retry matching with secondary in-network providers."
             next_agent = "matching"
@@ -49,12 +59,21 @@ def reflection_agent_node(state: ReferralState) -> ReferralState:
             proposed = "Fallback to intake re-evaluation."
             next_agent = "intake"
 
-        state["reflection"] = {
-            "needs_replan": True,
-            "proposed_action": proposed,
-            "reflection_notes": f"Reflection Attempt {retry_count}: Initiating bounded self-healing recovery path.",
-            "retry_count": retry_count
-        }
+        fallback = ReflectionResult(
+            needs_replan=True,
+            proposed_action=proposed,
+            reflection_notes=f"Reflection Attempt {retry_count}: Initiating bounded self-healing recovery path.",
+            retry_count=retry_count,
+        )
+        result, live, llm_error = invoke_structured(
+            ReflectionResult,
+            "You are a bounded referral recovery reviewer. Recommend one safe next action based on the failure. "
+            "Do not exceed the retry limit.",
+            f"Current status: {curr_status}; retry count: {retry_count}; max retries: {max_retries}",
+            fallback=fallback,
+        )
+        state["reflection"] = result.model_dump()
+        state["reflection"].update(live_status_log(live, llm_error))
         state["next_step"] = next_agent
 
     # Record Evidence Artifact for AC-12
@@ -65,7 +84,7 @@ def reflection_agent_node(state: ReferralState) -> ReferralState:
         "status": state["status"],
         "retry_count": retry_count,
         "next_step": state["next_step"],
-        "timestamp": datetime.utcnow().isoformat()
+        "timestamp": datetime.now(timezone.utc).isoformat()
     }]
     return state
 
@@ -77,7 +96,7 @@ def _record_reflection_evidence(state: ReferralState) -> None:
 
     log_entry = {
         "ac_id": "AC-12",
-        "timestamp": datetime.utcnow().isoformat(),
+        "timestamp": datetime.now(timezone.utc).isoformat(),
         "referral_id": state.get("referral_id"),
         "status": state.get("status"),
         "retry_count": state.get("retry_count"),

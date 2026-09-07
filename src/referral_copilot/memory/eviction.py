@@ -11,7 +11,7 @@ Healthcare referral memory stores both transient session details and persistent 
 3. Expired facts (TTL exceeded) are purged automatically regardless of importance.
 """
 
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 import sqlite3
 from typing import List, Dict, Any, Optional
 from pathlib import Path
@@ -31,7 +31,7 @@ class MemoryEvictionPolicy:
         conn = sqlite3.connect(self.db_path)
         cursor = conn.cursor()
 
-        now_iso = datetime.utcnow().isoformat()
+        now_iso = datetime.now(timezone.utc).isoformat()
 
         # 1. Purge TTL Expired Records
         cursor.execute(
@@ -62,6 +62,7 @@ class MemoryEvictionPolicy:
             cursor.execute(
                 """
                 SELECT fact_id FROM memory_facts
+                WHERE importance_score < 0.8
                 ORDER BY importance_score ASC, last_accessed_at ASC
                 LIMIT ?
                 """,

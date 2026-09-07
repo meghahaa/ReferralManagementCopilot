@@ -14,7 +14,7 @@ graph TD
     Start[START] --> Supervisor[Supervisor Orchestrator]
     Supervisor -->|Check Intake| Intake[Intake Agent Node]
     Intake -->|Valid Intake| Eligibility[Eligibility Check Node]
-    Intake -->|Missing Fields| End[END - INTAKE_INCOMPLETE]
+    Intake -->|Missing Fields| End[END - NEEDS_INFO]
     Eligibility -->|Eligible| Matching[Specialist Matching Node]
     Eligibility -->|Ineligible| End[END - INELIGIBLE]
     Matching -->|In-Network Match| Scheduling[Scheduling Node]
@@ -25,10 +25,11 @@ graph TD
     Reflection -->|Max Retries Exceeded| End[END - FAILED]
 ```
 
-## 3. Centralized LLM Provider Architecture
+## 3. Live LLM Provider Architecture
 - Centralized Provider Factory (`src/referral_copilot/llm/factory.py`) reads `LLM_PROVIDER` from `.env`.
 - Dynamic switching between `gemini` (Google Gemini) and `groq` (Groq API) via ONE configuration setting.
-- Zero direct model instantiation in agent worker nodes.
+- Worker nodes call `llm/runtime.py`, which requests validated Pydantic outputs from the configured provider.
+- With no usable key, each node uses an explicit domain-safe fallback and records `llm_mode: fallback`; a configured key always attempts a live call.
 
 ## 4. Context Engineering & Security Quarantine (NFR-03, NFR-08)
 - **Quarantine**: Untrusted free-text referring provider notes are sanitized and wrapped in an explicit passive XML boundary (`<UNTRUSTED_REFERRING_PROVIDER_NOTE>`) preventing prompt injection attacks.
@@ -42,5 +43,6 @@ graph TD
 ## 6. Custom Model Context Protocol (MCP) Server (AC-09, AC-10)
 - Built on Python MCP SDK (`mcp.server.fastmcp`).
 - Tools: `eligibility_check`, `network_lookup`, `specialist_availability`.
-- Resource: `referral_policy://cardiology`.
+- Resource: `referral-policy://cardiology`.
 - Consumed via `MCPClientAdapter` with committed evidence logs.
+- The adapter launches `server.py` as a local stdio MCP subprocess. Compatible installations use `langchain-mcp-adapters`; the vendored SDK has a protocol-level fallback so offline execution still uses MCP JSON-RPC rather than direct function imports.
