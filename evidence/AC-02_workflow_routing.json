@@ -1,0 +1,1343 @@
+[
+  {
+    "ac_id": "AC-02",
+    "timestamp": "2026-09-07T11:43:28.049103+00:00",
+    "thread_id": "thread-ac-02-test",
+    "referral_id": "REF-1001",
+    "final_status": "SCHEDULED",
+    "trajectory": [
+      {
+        "step": "SUPERVISOR",
+        "decision": {
+          "next_agent": "intake",
+          "action_reason": "The referral is in the NEW state and has not yet undergone eligibility checks. The next logical step is to collect intake information from the patient. This follows the required workflow and does not skip the eligibility stage.",
+          "requires_reflection": false,
+          "confidence": 1.0
+        },
+        "timestamp": "2026-09-07T11:43:12.942477+00:00",
+        "llm_mode": "live",
+        "llm_provider": "groq"
+      },
+      {
+        "step": "INTAKE_AGENT",
+        "status": "INTAKE_COMPLETE",
+        "timestamp": "2026-09-07T11:43:13.778238+00:00",
+        "injection_flag": false,
+        "llm_mode": "live",
+        "llm_provider": "groq"
+      },
+      {
+        "step": "ELIGIBILITY_AGENT",
+        "status": "ELIGIBLE",
+        "is_eligible": true,
+        "timestamp": "2026-09-07T11:43:15.999192+00:00",
+        "llm_mode": "live",
+        "llm_provider": "groq"
+      },
+      {
+        "step": "MATCHING_AGENT",
+        "status": "MATCHED",
+        "matched_specialist_id": "SPC-201",
+        "timestamp": "2026-09-07T11:43:26.422996+00:00",
+        "llm_mode": "live",
+        "llm_provider": "groq",
+        "policy_decision": {
+          "llm_mode": "live",
+          "llm_provider": "groq"
+        }
+      },
+      {
+        "step": "SCHEDULING_AGENT",
+        "status": "SCHEDULED",
+        "booking_id": "BOOK-0614B01F",
+        "slot": "2026-09-10T09:00:00Z",
+        "timestamp": "2026-09-07T11:43:28.047915+00:00",
+        "llm_mode": "live",
+        "llm_provider": "groq"
+      }
+    ]
+  },
+  {
+    "ac_id": "AC-02",
+    "timestamp": "2026-09-07T11:44:57.340280+00:00",
+    "thread_id": "thread-ac-02-test",
+    "referral_id": "REF-1001",
+    "final_status": "SCHEDULED",
+    "trajectory": [
+      {
+        "step": "SUPERVISOR",
+        "decision": {
+          "next_agent": "intake",
+          "action_reason": "The referral is in the NEW state and has not yet undergone eligibility checks. The next logical step is to collect intake information from the patient. This follows the required workflow and does not skip the eligibility stage.",
+          "requires_reflection": false,
+          "confidence": 1.0
+        },
+        "timestamp": "2026-09-07T11:44:43.081943+00:00",
+        "llm_mode": "live",
+        "llm_provider": "groq"
+      },
+      {
+        "step": "INTAKE_AGENT",
+        "status": "INTAKE_COMPLETE",
+        "timestamp": "2026-09-07T11:44:43.915203+00:00",
+        "injection_flag": false,
+        "llm_mode": "live",
+        "llm_provider": "groq"
+      },
+      {
+        "step": "ELIGIBILITY_AGENT",
+        "status": "ELIGIBLE",
+        "is_eligible": true,
+        "timestamp": "2026-09-07T11:44:46.317762+00:00",
+        "llm_mode": "live",
+        "llm_provider": "groq"
+      },
+      {
+        "step": "MATCHING_AGENT",
+        "status": "MATCHED",
+        "matched_specialist_id": "SPC-201",
+        "timestamp": "2026-09-07T11:44:55.754864+00:00",
+        "llm_mode": "live",
+        "llm_provider": "groq",
+        "policy_decision": {
+          "llm_mode": "live",
+          "llm_provider": "groq"
+        }
+      },
+      {
+        "step": "SCHEDULING_AGENT",
+        "status": "SCHEDULED",
+        "booking_id": "BOOK-7E7C9C7C",
+        "slot": "2026-09-10T09:00:00Z",
+        "timestamp": "2026-09-07T11:44:57.339044+00:00",
+        "llm_mode": "live",
+        "llm_provider": "groq"
+      }
+    ]
+  },
+  {
+    "ac_id": "AC-02",
+    "timestamp": "2026-09-07T11:45:45.434350+00:00",
+    "thread_id": "thread-ac-02-test",
+    "referral_id": "REF-1001",
+    "final_status": "SCHEDULED",
+    "trajectory": [
+      {
+        "step": "SUPERVISOR",
+        "decision": {
+          "next_agent": "intake",
+          "action_reason": "The referral is in the NEW state and has not yet undergone eligibility assessment. The next logical step is to collect intake information from the patient. This follows the required workflow and does not skip the eligibility stage.",
+          "requires_reflection": false,
+          "confidence": 1.0
+        },
+        "timestamp": "2026-09-07T11:45:25.203073+00:00",
+        "llm_mode": "live",
+        "llm_provider": "groq"
+      },
+      {
+        "step": "INTAKE_AGENT",
+        "status": "INTAKE_COMPLETE",
+        "timestamp": "2026-09-07T11:45:25.924423+00:00",
+        "injection_flag": false,
+        "llm_mode": "live",
+        "llm_provider": "groq"
+      },
+      {
+        "step": "ELIGIBILITY_AGENT",
+        "status": "ELIGIBLE",
+        "is_eligible": true,
+        "timestamp": "2026-09-07T11:45:27.815123+00:00",
+        "llm_mode": "live",
+        "llm_provider": "groq"
+      },
+      {
+        "step": "MATCHING_AGENT",
+        "status": "MATCHED",
+        "matched_specialist_id": "SPC-201",
+        "timestamp": "2026-09-07T11:45:43.774694+00:00",
+        "llm_mode": "live",
+        "llm_provider": "groq",
+        "policy_decision": {
+          "llm_mode": "live",
+          "llm_provider": "groq"
+        }
+      },
+      {
+        "step": "SCHEDULING_AGENT",
+        "status": "SCHEDULED",
+        "booking_id": "BOOK-B5BF9704",
+        "slot": "2026-09-10T09:00:00Z",
+        "timestamp": "2026-09-07T11:45:45.433277+00:00",
+        "llm_mode": "live",
+        "llm_provider": "groq"
+      }
+    ]
+  },
+  {
+    "ac_id": "AC-02",
+    "timestamp": "2026-09-07T11:45:58.324251+00:00",
+    "thread_id": "thread-ac-03-oon",
+    "referral_id": "REF-1002",
+    "final_status": "OUT_OF_NETWORK_PENDING_AUTH",
+    "trajectory": [
+      {
+        "step": "SUPERVISOR",
+        "decision": {
+          "next_agent": "intake",
+          "action_reason": "The referral is in the NEW state and has not yet undergone eligibility checks. The next logical step is to collect intake information from the patient. This follows the required workflow and does not skip the eligibility stage.",
+          "requires_reflection": false,
+          "confidence": 1.0
+        },
+        "timestamp": "2026-09-07T11:45:46.232171+00:00",
+        "llm_mode": "live",
+        "llm_provider": "groq"
+      },
+      {
+        "step": "INTAKE_AGENT",
+        "status": "INTAKE_COMPLETE",
+        "timestamp": "2026-09-07T11:45:47.138302+00:00",
+        "injection_flag": false,
+        "llm_mode": "live",
+        "llm_provider": "groq"
+      },
+      {
+        "step": "ELIGIBILITY_AGENT",
+        "status": "ELIGIBLE",
+        "is_eligible": true,
+        "timestamp": "2026-09-07T11:45:48.573382+00:00",
+        "llm_mode": "live",
+        "llm_provider": "groq"
+      },
+      {
+        "step": "MATCHING_AGENT",
+        "status": "OUT_OF_NETWORK_PENDING_AUTH",
+        "matched_specialist_id": "SPC-202",
+        "timestamp": "2026-09-07T11:45:58.323000+00:00",
+        "llm_mode": "live",
+        "llm_provider": "groq",
+        "policy_decision": {
+          "llm_mode": "live",
+          "llm_provider": "groq"
+        }
+      }
+    ]
+  },
+  {
+    "ac_id": "AC-02",
+    "timestamp": "2026-09-07T11:46:01.695567+00:00",
+    "thread_id": "thread-ac-03-inelig",
+    "referral_id": "REF-1004",
+    "final_status": "INELIGIBLE",
+    "trajectory": [
+      {
+        "step": "SUPERVISOR",
+        "decision": {
+          "next_agent": "intake",
+          "action_reason": "The referral is in the NEW state and has not yet undergone eligibility checks. The next logical step is to collect intake information from the patient. This follows the required workflow and does not skip the eligibility stage.",
+          "requires_reflection": false,
+          "confidence": 1.0
+        },
+        "timestamp": "2026-09-07T11:45:58.731681+00:00",
+        "llm_mode": "live",
+        "llm_provider": "groq"
+      },
+      {
+        "step": "INTAKE_AGENT",
+        "status": "INTAKE_COMPLETE",
+        "timestamp": "2026-09-07T11:45:59.761049+00:00",
+        "injection_flag": false,
+        "llm_mode": "live",
+        "llm_provider": "groq"
+      },
+      {
+        "step": "ELIGIBILITY_AGENT",
+        "status": "INELIGIBLE",
+        "is_eligible": false,
+        "timestamp": "2026-09-07T11:46:01.694583+00:00",
+        "llm_mode": "live",
+        "llm_provider": "groq"
+      }
+    ]
+  },
+  {
+    "ac_id": "AC-02",
+    "timestamp": "2026-09-07T11:46:16.862162+00:00",
+    "thread_id": "thread-pause-resume-test-101",
+    "referral_id": "REF-1001",
+    "final_status": "SCHEDULED",
+    "trajectory": [
+      {
+        "step": "SUPERVISOR",
+        "decision": {
+          "next_agent": "intake",
+          "action_reason": "The referral is in the NEW state and has not yet undergone eligibility checks. The next logical step is to collect intake information from the patient. This follows the required workflow and does not skip the eligibility stage.",
+          "requires_reflection": false,
+          "confidence": 1.0
+        },
+        "timestamp": "2026-09-07T11:46:02.618053+00:00",
+        "llm_mode": "live",
+        "llm_provider": "groq"
+      },
+      {
+        "step": "INTAKE_AGENT",
+        "status": "INTAKE_COMPLETE",
+        "timestamp": "2026-09-07T11:46:03.381135+00:00",
+        "injection_flag": false,
+        "llm_mode": "live",
+        "llm_provider": "groq"
+      },
+      {
+        "step": "ELIGIBILITY_AGENT",
+        "status": "ELIGIBLE",
+        "is_eligible": true,
+        "timestamp": "2026-09-07T11:46:05.177926+00:00",
+        "llm_mode": "live",
+        "llm_provider": "groq"
+      },
+      {
+        "step": "MATCHING_AGENT",
+        "status": "MATCHED",
+        "matched_specialist_id": "SPC-201",
+        "timestamp": "2026-09-07T11:46:14.953026+00:00",
+        "llm_mode": "live",
+        "llm_provider": "groq",
+        "policy_decision": {
+          "llm_mode": "live",
+          "llm_provider": "groq"
+        }
+      },
+      {
+        "step": "SCHEDULING_AGENT",
+        "status": "SCHEDULED",
+        "booking_id": "BOOK-BD701D45",
+        "slot": "2026-09-10T09:00:00Z",
+        "timestamp": "2026-09-07T11:46:16.850476+00:00",
+        "llm_mode": "live",
+        "llm_provider": "groq"
+      }
+    ]
+  },
+  {
+    "ac_id": "AC-02",
+    "timestamp": "2026-09-07T11:46:51.668763+00:00",
+    "thread_id": "demo-thread-REF-1001",
+    "referral_id": "REF-1001",
+    "final_status": "SCHEDULED",
+    "trajectory": [
+      {
+        "step": "SUPERVISOR",
+        "decision": {
+          "next_agent": "intake",
+          "action_reason": "The referral is in the NEW state and has not yet been processed. The next logical step is to collect initial information from the user, so we route to the intake agent.",
+          "requires_reflection": false,
+          "confidence": 1.0
+        },
+        "timestamp": "2026-09-07T11:46:30.477710+00:00",
+        "llm_mode": "live",
+        "llm_provider": "groq"
+      },
+      {
+        "step": "INTAKE_AGENT",
+        "status": "INTAKE_COMPLETE",
+        "timestamp": "2026-09-07T11:46:31.551699+00:00",
+        "injection_flag": false,
+        "llm_mode": "live",
+        "llm_provider": "groq"
+      },
+      {
+        "step": "ELIGIBILITY_AGENT",
+        "status": "ELIGIBLE",
+        "is_eligible": true,
+        "timestamp": "2026-09-07T11:46:33.656894+00:00",
+        "llm_mode": "live",
+        "llm_provider": "groq"
+      },
+      {
+        "step": "MATCHING_AGENT",
+        "status": "MATCHED",
+        "matched_specialist_id": "SPC-201",
+        "timestamp": "2026-09-07T11:46:49.623407+00:00",
+        "llm_mode": "live",
+        "llm_provider": "groq",
+        "policy_decision": {
+          "llm_mode": "live",
+          "llm_provider": "groq"
+        }
+      },
+      {
+        "step": "SCHEDULING_AGENT",
+        "status": "SCHEDULED",
+        "booking_id": "BOOK-40447B26",
+        "slot": "2026-09-10T09:00:00Z",
+        "timestamp": "2026-09-07T11:46:51.667722+00:00",
+        "llm_mode": "live",
+        "llm_provider": "groq"
+      }
+    ]
+  },
+  {
+    "ac_id": "AC-02",
+    "timestamp": "2026-09-07T11:48:03.655495+00:00",
+    "thread_id": "evidence-checkpoint-thread",
+    "referral_id": "REF-1001",
+    "final_status": "SCHEDULED",
+    "trajectory": [
+      {
+        "step": "SUPERVISOR",
+        "decision": {
+          "next_agent": "intake",
+          "action_reason": "The referral is in the NEW state and has not yet undergone eligibility checks. The next logical step is to collect intake information from the patient. This follows the required workflow and does not skip the eligibility stage.",
+          "requires_reflection": false,
+          "confidence": 1.0
+        },
+        "timestamp": "2026-09-07T11:47:44.538253+00:00",
+        "llm_mode": "live",
+        "llm_provider": "groq"
+      },
+      {
+        "step": "INTAKE_AGENT",
+        "status": "INTAKE_COMPLETE",
+        "timestamp": "2026-09-07T11:47:45.542387+00:00",
+        "injection_flag": false,
+        "llm_mode": "live",
+        "llm_provider": "groq"
+      },
+      {
+        "step": "ELIGIBILITY_AGENT",
+        "status": "ELIGIBLE",
+        "is_eligible": true,
+        "timestamp": "2026-09-07T11:47:47.397994+00:00",
+        "llm_mode": "live",
+        "llm_provider": "groq"
+      },
+      {
+        "step": "MATCHING_AGENT",
+        "status": "MATCHED",
+        "matched_specialist_id": "SPC-201",
+        "timestamp": "2026-09-07T11:48:01.890046+00:00",
+        "llm_mode": "live",
+        "llm_provider": "groq",
+        "policy_decision": {
+          "llm_mode": "live",
+          "llm_provider": "groq"
+        }
+      },
+      {
+        "step": "SCHEDULING_AGENT",
+        "status": "SCHEDULED",
+        "booking_id": "BOOK-A6D2BFED",
+        "slot": "2026-09-10T09:00:00Z",
+        "timestamp": "2026-09-07T11:48:03.654279+00:00",
+        "llm_mode": "live",
+        "llm_provider": "groq"
+      }
+    ]
+  },
+  {
+    "ac_id": "AC-02",
+    "timestamp": "2026-09-07T11:49:38.052398+00:00",
+    "thread_id": "thread-ac-02-test",
+    "referral_id": "REF-1001",
+    "final_status": "SCHEDULED",
+    "trajectory": [
+      {
+        "step": "SUPERVISOR",
+        "decision": {
+          "next_agent": "intake",
+          "action_reason": "The referral is in the NEW state and has not yet undergone eligibility assessment. The next logical step is to collect intake information from the patient. This follows the required workflow and does not skip the eligibility stage.",
+          "requires_reflection": false,
+          "confidence": 1.0
+        },
+        "timestamp": "2026-09-07T11:49:19.872557+00:00",
+        "llm_mode": "live",
+        "llm_provider": "groq"
+      },
+      {
+        "step": "INTAKE_AGENT",
+        "status": "INTAKE_COMPLETE",
+        "timestamp": "2026-09-07T11:49:20.440586+00:00",
+        "injection_flag": false,
+        "llm_mode": "live",
+        "llm_provider": "groq"
+      },
+      {
+        "step": "ELIGIBILITY_AGENT",
+        "status": "ELIGIBLE",
+        "is_eligible": true,
+        "timestamp": "2026-09-07T11:49:22.095191+00:00",
+        "llm_mode": "live",
+        "llm_provider": "groq"
+      },
+      {
+        "step": "MATCHING_AGENT",
+        "status": "MATCHED",
+        "matched_specialist_id": "SPC-201",
+        "timestamp": "2026-09-07T11:49:36.508866+00:00",
+        "llm_mode": "live",
+        "llm_provider": "groq",
+        "policy_decision": {
+          "llm_mode": "live",
+          "llm_provider": "groq"
+        }
+      },
+      {
+        "step": "SCHEDULING_AGENT",
+        "status": "SCHEDULED",
+        "booking_id": "BOOK-3B10F1FD",
+        "slot": "2026-09-10T09:00:00Z",
+        "timestamp": "2026-09-07T11:49:38.051001+00:00",
+        "llm_mode": "live",
+        "llm_provider": "groq"
+      }
+    ]
+  },
+  {
+    "ac_id": "AC-02",
+    "timestamp": "2026-09-07T11:49:50.568356+00:00",
+    "thread_id": "thread-ac-03-oon",
+    "referral_id": "REF-1002",
+    "final_status": "OUT_OF_NETWORK_PENDING_AUTH",
+    "trajectory": [
+      {
+        "step": "SUPERVISOR",
+        "decision": {
+          "next_agent": "intake",
+          "action_reason": "The referral is in the NEW state and has not yet undergone eligibility checks. The next logical step is to collect intake information from the patient. This follows the required workflow and does not skip the eligibility stage.",
+          "requires_reflection": false,
+          "confidence": 1.0
+        },
+        "timestamp": "2026-09-07T11:49:38.762814+00:00",
+        "llm_mode": "live",
+        "llm_provider": "groq"
+      },
+      {
+        "step": "INTAKE_AGENT",
+        "status": "INTAKE_COMPLETE",
+        "timestamp": "2026-09-07T11:49:40.126934+00:00",
+        "injection_flag": false,
+        "llm_mode": "live",
+        "llm_provider": "groq"
+      },
+      {
+        "step": "ELIGIBILITY_AGENT",
+        "status": "ELIGIBLE",
+        "is_eligible": true,
+        "timestamp": "2026-09-07T11:49:41.881595+00:00",
+        "llm_mode": "live",
+        "llm_provider": "groq"
+      },
+      {
+        "step": "MATCHING_AGENT",
+        "status": "OUT_OF_NETWORK_PENDING_AUTH",
+        "matched_specialist_id": "SPC-202",
+        "timestamp": "2026-09-07T11:49:50.567035+00:00",
+        "llm_mode": "live",
+        "llm_provider": "groq",
+        "policy_decision": {
+          "llm_mode": "live",
+          "llm_provider": "groq"
+        }
+      }
+    ]
+  },
+  {
+    "ac_id": "AC-02",
+    "timestamp": "2026-09-07T11:49:54.252396+00:00",
+    "thread_id": "thread-ac-03-inelig",
+    "referral_id": "REF-1004",
+    "final_status": "INELIGIBLE",
+    "trajectory": [
+      {
+        "step": "SUPERVISOR",
+        "decision": {
+          "next_agent": "intake",
+          "action_reason": "The referral is in the NEW state and has not yet undergone eligibility checks. The next logical step is to collect intake information from the patient. This follows the required workflow and does not skip the eligibility stage.",
+          "requires_reflection": false,
+          "confidence": 1.0
+        },
+        "timestamp": "2026-09-07T11:49:51.382738+00:00",
+        "llm_mode": "live",
+        "llm_provider": "groq"
+      },
+      {
+        "step": "INTAKE_AGENT",
+        "status": "INTAKE_COMPLETE",
+        "timestamp": "2026-09-07T11:49:52.492620+00:00",
+        "injection_flag": false,
+        "llm_mode": "live",
+        "llm_provider": "groq"
+      },
+      {
+        "step": "ELIGIBILITY_AGENT",
+        "status": "INELIGIBLE",
+        "is_eligible": false,
+        "timestamp": "2026-09-07T11:49:54.251174+00:00",
+        "llm_mode": "live",
+        "llm_provider": "groq"
+      }
+    ]
+  },
+  {
+    "ac_id": "AC-02",
+    "timestamp": "2026-09-07T11:50:10.345363+00:00",
+    "thread_id": "thread-pause-resume-test-101",
+    "referral_id": "REF-1001",
+    "final_status": "SCHEDULED",
+    "trajectory": [
+      {
+        "step": "SUPERVISOR",
+        "decision": {
+          "next_agent": "intake",
+          "action_reason": "The referral is in the NEW state and has not yet undergone eligibility checks. The next logical step is to collect intake information from the patient. This follows the required workflow and does not skip the eligibility stage.",
+          "requires_reflection": false,
+          "confidence": 1.0
+        },
+        "timestamp": "2026-09-07T11:49:55.274974+00:00",
+        "llm_mode": "live",
+        "llm_provider": "groq"
+      },
+      {
+        "step": "INTAKE_AGENT",
+        "status": "INTAKE_COMPLETE",
+        "timestamp": "2026-09-07T11:49:55.986221+00:00",
+        "injection_flag": false,
+        "llm_mode": "live",
+        "llm_provider": "groq"
+      },
+      {
+        "step": "ELIGIBILITY_AGENT",
+        "status": "ELIGIBLE",
+        "is_eligible": true,
+        "timestamp": "2026-09-07T11:49:57.731085+00:00",
+        "llm_mode": "live",
+        "llm_provider": "groq"
+      },
+      {
+        "step": "MATCHING_AGENT",
+        "status": "MATCHED",
+        "matched_specialist_id": "SPC-201",
+        "timestamp": "2026-09-07T11:50:08.254124+00:00",
+        "llm_mode": "live",
+        "llm_provider": "groq",
+        "policy_decision": {
+          "llm_mode": "live",
+          "llm_provider": "groq"
+        }
+      },
+      {
+        "step": "SCHEDULING_AGENT",
+        "status": "SCHEDULED",
+        "booking_id": "BOOK-396E70EC",
+        "slot": "2026-09-10T09:00:00Z",
+        "timestamp": "2026-09-07T11:50:10.333404+00:00",
+        "llm_mode": "live",
+        "llm_provider": "groq"
+      }
+    ]
+  },
+  {
+    "ac_id": "AC-02",
+    "timestamp": "2026-09-07T12:02:01.225437+00:00",
+    "thread_id": "eval-REF-1001",
+    "referral_id": "REF-1001",
+    "final_status": "SCHEDULED",
+    "trajectory": [
+      {
+        "step": "SUPERVISOR",
+        "decision": {
+          "next_agent": "intake",
+          "action_reason": "The referral is in the NEW state and has not yet been processed. The correct next step is to collect initial information from the user, so we route to the intake agent.",
+          "requires_reflection": false,
+          "confidence": 1.0
+        },
+        "timestamp": "2026-09-07T12:01:45.155313+00:00",
+        "llm_mode": "live",
+        "llm_provider": "groq"
+      },
+      {
+        "step": "INTAKE_AGENT",
+        "status": "INTAKE_COMPLETE",
+        "timestamp": "2026-09-07T12:01:45.962456+00:00",
+        "injection_flag": false,
+        "llm_mode": "live",
+        "llm_provider": "groq"
+      },
+      {
+        "step": "ELIGIBILITY_AGENT",
+        "status": "ELIGIBLE",
+        "is_eligible": true,
+        "timestamp": "2026-09-07T12:01:48.319349+00:00",
+        "llm_mode": "live",
+        "llm_provider": "groq"
+      },
+      {
+        "step": "MATCHING_AGENT",
+        "status": "MATCHED",
+        "matched_specialist_id": "SPC-201",
+        "timestamp": "2026-09-07T12:01:59.577655+00:00",
+        "llm_mode": "live",
+        "llm_provider": "groq",
+        "policy_decision": {
+          "llm_mode": "live",
+          "llm_provider": "groq"
+        }
+      },
+      {
+        "step": "SCHEDULING_AGENT",
+        "status": "SCHEDULED",
+        "booking_id": "BOOK-289957AF",
+        "slot": "2026-09-10T09:00:00Z",
+        "timestamp": "2026-09-07T12:02:01.215501+00:00",
+        "llm_mode": "live",
+        "llm_provider": "groq"
+      }
+    ]
+  },
+  {
+    "ac_id": "AC-02",
+    "timestamp": "2026-09-07T12:02:12.074227+00:00",
+    "thread_id": "eval-REF-1002",
+    "referral_id": "REF-1002",
+    "final_status": "OUT_OF_NETWORK_PENDING_AUTH",
+    "trajectory": [
+      {
+        "step": "SUPERVISOR",
+        "decision": {
+          "next_agent": "intake",
+          "action_reason": "The referral is in the NEW state and has not yet been processed. The correct next step is to collect initial information from the user, so we route to the intake agent.",
+          "requires_reflection": false,
+          "confidence": 1.0
+        },
+        "timestamp": "2026-09-07T12:02:02.099398+00:00",
+        "llm_mode": "live",
+        "llm_provider": "groq"
+      },
+      {
+        "step": "INTAKE_AGENT",
+        "status": "INTAKE_COMPLETE",
+        "timestamp": "2026-09-07T12:02:02.994262+00:00",
+        "injection_flag": false,
+        "llm_mode": "live",
+        "llm_provider": "groq"
+      },
+      {
+        "step": "ELIGIBILITY_AGENT",
+        "status": "ELIGIBLE",
+        "is_eligible": true,
+        "timestamp": "2026-09-07T12:02:04.496136+00:00",
+        "llm_mode": "live",
+        "llm_provider": "groq"
+      },
+      {
+        "step": "MATCHING_AGENT",
+        "status": "OUT_OF_NETWORK_PENDING_AUTH",
+        "matched_specialist_id": "SPC-202",
+        "timestamp": "2026-09-07T12:02:12.073199+00:00",
+        "llm_mode": "live",
+        "llm_provider": "groq",
+        "policy_decision": {
+          "llm_mode": "live",
+          "llm_provider": "groq"
+        }
+      }
+    ]
+  },
+  {
+    "ac_id": "AC-02",
+    "timestamp": "2026-09-07T12:02:23.448535+00:00",
+    "thread_id": "eval-REF-1003",
+    "referral_id": "REF-1003",
+    "final_status": "EXPEDITED_SCHEDULED",
+    "trajectory": [
+      {
+        "step": "SUPERVISOR",
+        "decision": {
+          "next_agent": "intake",
+          "action_reason": "The referral is in the NEW state and has not yet been processed. The correct next step is to collect initial information from the user, so we route to the intake agent.",
+          "requires_reflection": false,
+          "confidence": 1.0
+        },
+        "timestamp": "2026-09-07T12:02:13.000574+00:00",
+        "llm_mode": "live",
+        "llm_provider": "groq"
+      },
+      {
+        "step": "INTAKE_AGENT",
+        "status": "INTAKE_COMPLETE",
+        "timestamp": "2026-09-07T12:02:13.731684+00:00",
+        "injection_flag": false,
+        "llm_mode": "live",
+        "llm_provider": "groq"
+      },
+      {
+        "step": "ELIGIBILITY_AGENT",
+        "status": "ELIGIBLE",
+        "is_eligible": true,
+        "timestamp": "2026-09-07T12:02:15.216094+00:00",
+        "llm_mode": "live",
+        "llm_provider": "groq"
+      },
+      {
+        "step": "MATCHING_AGENT",
+        "status": "MATCHED",
+        "matched_specialist_id": "SPC-203",
+        "timestamp": "2026-09-07T12:02:22.209876+00:00",
+        "llm_mode": "live",
+        "llm_provider": "groq",
+        "policy_decision": {
+          "llm_mode": "live",
+          "llm_provider": "groq"
+        }
+      },
+      {
+        "step": "SCHEDULING_AGENT",
+        "status": "EXPEDITED_SCHEDULED",
+        "booking_id": "BOOK-42C59403",
+        "slot": "2026-09-07T08:00:00Z",
+        "timestamp": "2026-09-07T12:02:23.446291+00:00",
+        "llm_mode": "live",
+        "llm_provider": "groq"
+      }
+    ]
+  },
+  {
+    "ac_id": "AC-02",
+    "timestamp": "2026-09-07T12:02:26.974179+00:00",
+    "thread_id": "eval-REF-1004",
+    "referral_id": "REF-1004",
+    "final_status": "INELIGIBLE",
+    "trajectory": [
+      {
+        "step": "SUPERVISOR",
+        "decision": {
+          "next_agent": "intake",
+          "action_reason": "The referral is in the NEW state and has not yet been processed. The correct next step is to collect initial information from the user, so we route to the intake agent.",
+          "requires_reflection": false,
+          "confidence": 1.0
+        },
+        "timestamp": "2026-09-07T12:02:24.245467+00:00",
+        "llm_mode": "live",
+        "llm_provider": "groq"
+      },
+      {
+        "step": "INTAKE_AGENT",
+        "status": "INTAKE_COMPLETE",
+        "timestamp": "2026-09-07T12:02:25.170362+00:00",
+        "injection_flag": false,
+        "llm_mode": "live",
+        "llm_provider": "groq"
+      },
+      {
+        "step": "ELIGIBILITY_AGENT",
+        "status": "INELIGIBLE",
+        "is_eligible": false,
+        "timestamp": "2026-09-07T12:02:26.972733+00:00",
+        "llm_mode": "live",
+        "llm_provider": "groq"
+      }
+    ]
+  },
+  {
+    "ac_id": "AC-02",
+    "timestamp": "2026-09-07T12:02:28.584948+00:00",
+    "thread_id": "eval-REF-1005",
+    "referral_id": "REF-1005",
+    "final_status": "NEEDS_INFO",
+    "trajectory": [
+      {
+        "step": "SUPERVISOR",
+        "decision": {
+          "next_agent": "intake",
+          "action_reason": "The referral is in the NEW state and has not yet been processed. The correct next step is to collect initial information from the user, so we route to the intake agent.",
+          "requires_reflection": false,
+          "confidence": 1.0
+        },
+        "timestamp": "2026-09-07T12:02:27.939457+00:00",
+        "llm_mode": "live",
+        "llm_provider": "groq"
+      },
+      {
+        "step": "INTAKE_AGENT",
+        "status": "NEEDS_INFO",
+        "timestamp": "2026-09-07T12:02:28.583189+00:00",
+        "injection_flag": false,
+        "llm_mode": "live",
+        "llm_provider": "groq"
+      }
+    ]
+  },
+  {
+    "ac_id": "AC-02",
+    "timestamp": "2026-09-07T12:02:43.135564+00:00",
+    "thread_id": "eval-REF-1006",
+    "referral_id": "REF-1006",
+    "final_status": "POLICY_LOOKUP_COMPLETE",
+    "trajectory": [
+      {
+        "step": "SUPERVISOR",
+        "decision": {
+          "next_agent": "intake",
+          "action_reason": "The referral is in the NEW state and has not yet undergone intake. Intake is the appropriate next step before eligibility can be assessed.",
+          "requires_reflection": false,
+          "confidence": 1.0
+        },
+        "timestamp": "2026-09-07T12:02:29.589281+00:00",
+        "llm_mode": "live",
+        "llm_provider": "groq"
+      },
+      {
+        "step": "INTAKE_AGENT",
+        "status": "INTAKE_COMPLETE",
+        "timestamp": "2026-09-07T12:02:31.351716+00:00",
+        "injection_flag": false,
+        "llm_mode": "live",
+        "llm_provider": "groq"
+      },
+      {
+        "step": "ELIGIBILITY_AGENT",
+        "status": "ELIGIBLE",
+        "is_eligible": true,
+        "timestamp": "2026-09-07T12:02:33.378595+00:00",
+        "llm_mode": "live",
+        "llm_provider": "groq"
+      },
+      {
+        "step": "MATCHING_AGENT",
+        "status": "POLICY_LOOKUP_COMPLETE",
+        "matched_specialist_id": "SPC-201",
+        "timestamp": "2026-09-07T12:02:43.133696+00:00",
+        "llm_mode": "live",
+        "llm_provider": "groq",
+        "policy_decision": {
+          "llm_mode": "live",
+          "llm_provider": "groq"
+        }
+      }
+    ]
+  },
+  {
+    "ac_id": "AC-02",
+    "timestamp": "2026-09-07T12:02:56.128093+00:00",
+    "thread_id": "eval-REF-1007",
+    "referral_id": "REF-1007",
+    "final_status": "MATCHED",
+    "trajectory": [
+      {
+        "step": "SUPERVISOR",
+        "decision": {
+          "next_agent": "intake",
+          "action_reason": "The referral is in the NEW state and has not yet been processed. The correct next step is to collect initial information from the user, so we route to the intake agent.",
+          "requires_reflection": false,
+          "confidence": 1.0
+        },
+        "timestamp": "2026-09-07T12:02:44.029222+00:00",
+        "llm_mode": "live",
+        "llm_provider": "groq"
+      },
+      {
+        "step": "INTAKE_AGENT",
+        "status": "INTAKE_COMPLETE",
+        "timestamp": "2026-09-07T12:02:44.956831+00:00",
+        "injection_flag": false,
+        "llm_mode": "live",
+        "llm_provider": "groq"
+      },
+      {
+        "step": "ELIGIBILITY_AGENT",
+        "status": "ELIGIBLE",
+        "is_eligible": true,
+        "timestamp": "2026-09-07T12:02:47.513721+00:00",
+        "llm_mode": "live",
+        "llm_provider": "groq"
+      },
+      {
+        "step": "MATCHING_AGENT",
+        "status": "MATCHED",
+        "matched_specialist_id": "SPC-204",
+        "timestamp": "2026-09-07T12:02:56.126478+00:00",
+        "llm_mode": "live",
+        "llm_provider": "groq",
+        "policy_decision": {
+          "llm_mode": "live",
+          "llm_provider": "groq"
+        }
+      }
+    ]
+  },
+  {
+    "ac_id": "AC-02",
+    "timestamp": "2026-09-07T12:03:10.258689+00:00",
+    "thread_id": "eval-REF-1008",
+    "referral_id": "REF-1008",
+    "final_status": "SCHEDULED",
+    "trajectory": [
+      {
+        "step": "SUPERVISOR",
+        "decision": {
+          "next_agent": "intake",
+          "action_reason": "The referral is in the NEW state and has not yet been processed. The correct next step is to collect initial information from the user, so we route to the intake agent.",
+          "requires_reflection": false,
+          "confidence": 1.0
+        },
+        "timestamp": "2026-09-07T12:02:56.543568+00:00",
+        "llm_mode": "live",
+        "llm_provider": "groq"
+      },
+      {
+        "step": "INTAKE_AGENT",
+        "status": "INTAKE_COMPLETE",
+        "timestamp": "2026-09-07T12:02:57.769989+00:00",
+        "injection_flag": false,
+        "llm_mode": "live",
+        "llm_provider": "groq"
+      },
+      {
+        "step": "ELIGIBILITY_AGENT",
+        "status": "ELIGIBLE",
+        "is_eligible": true,
+        "timestamp": "2026-09-07T12:02:59.387514+00:00",
+        "llm_mode": "live",
+        "llm_provider": "groq"
+      },
+      {
+        "step": "MATCHING_AGENT",
+        "status": "MATCHED",
+        "matched_specialist_id": "SPC-206",
+        "timestamp": "2026-09-07T12:03:08.605169+00:00",
+        "llm_mode": "live",
+        "llm_provider": "groq",
+        "policy_decision": {
+          "llm_mode": "live",
+          "llm_provider": "groq"
+        }
+      },
+      {
+        "step": "SCHEDULING_AGENT",
+        "status": "SCHEDULED",
+        "booking_id": "BOOK-6DD5D314",
+        "slot": "2026-09-08T09:00:00Z",
+        "timestamp": "2026-09-07T12:03:10.256567+00:00",
+        "llm_mode": "live",
+        "llm_provider": "groq"
+      }
+    ]
+  },
+  {
+    "ac_id": "AC-02",
+    "timestamp": "2026-09-07T12:03:35.893196+00:00",
+    "thread_id": "thread-ac-02-test",
+    "referral_id": "REF-1001",
+    "final_status": "SCHEDULED",
+    "trajectory": [
+      {
+        "step": "SUPERVISOR",
+        "decision": {
+          "next_agent": "intake",
+          "action_reason": "The referral is in the NEW state and has not yet undergone eligibility checks. The next logical step is to collect intake information from the patient. This follows the required workflow and does not skip the eligibility stage.",
+          "requires_reflection": false,
+          "confidence": 1.0
+        },
+        "timestamp": "2026-09-07T12:03:15.004357+00:00",
+        "llm_mode": "live",
+        "llm_provider": "groq"
+      },
+      {
+        "step": "INTAKE_AGENT",
+        "status": "INTAKE_COMPLETE",
+        "timestamp": "2026-09-07T12:03:18.543661+00:00",
+        "injection_flag": false,
+        "llm_mode": "live",
+        "llm_provider": "groq"
+      },
+      {
+        "step": "ELIGIBILITY_AGENT",
+        "status": "ELIGIBLE",
+        "is_eligible": true,
+        "timestamp": "2026-09-07T12:03:21.377382+00:00",
+        "llm_mode": "live",
+        "llm_provider": "groq"
+      },
+      {
+        "step": "MATCHING_AGENT",
+        "status": "MATCHED",
+        "matched_specialist_id": "SPC-201",
+        "timestamp": "2026-09-07T12:03:34.321849+00:00",
+        "llm_mode": "live",
+        "llm_provider": "groq",
+        "policy_decision": {
+          "llm_mode": "live",
+          "llm_provider": "groq"
+        }
+      },
+      {
+        "step": "SCHEDULING_AGENT",
+        "status": "SCHEDULED",
+        "booking_id": "BOOK-FCF63538",
+        "slot": "2026-09-10T09:00:00Z",
+        "timestamp": "2026-09-07T12:03:35.891058+00:00",
+        "llm_mode": "live",
+        "llm_provider": "groq"
+      }
+    ]
+  },
+  {
+    "ac_id": "AC-02",
+    "timestamp": "2026-09-07T12:03:51.247584+00:00",
+    "thread_id": "thread-ac-03-oon",
+    "referral_id": "REF-1002",
+    "final_status": "OUT_OF_NETWORK_PENDING_AUTH",
+    "trajectory": [
+      {
+        "step": "SUPERVISOR",
+        "decision": {
+          "next_agent": "intake",
+          "action_reason": "The referral is in the NEW state and has not yet undergone eligibility assessment. The next logical step is to collect intake information from the patient. This follows the required workflow and does not skip the eligibility stage.",
+          "requires_reflection": false,
+          "confidence": 1.0
+        },
+        "timestamp": "2026-09-07T12:03:36.764682+00:00",
+        "llm_mode": "live",
+        "llm_provider": "groq"
+      },
+      {
+        "step": "INTAKE_AGENT",
+        "status": "INTAKE_COMPLETE",
+        "timestamp": "2026-09-07T12:03:39.661465+00:00",
+        "injection_flag": false,
+        "llm_mode": "live",
+        "llm_provider": "groq"
+      },
+      {
+        "step": "ELIGIBILITY_AGENT",
+        "status": "ELIGIBLE",
+        "is_eligible": true,
+        "timestamp": "2026-09-07T12:03:43.522838+00:00",
+        "llm_mode": "live",
+        "llm_provider": "groq"
+      },
+      {
+        "step": "MATCHING_AGENT",
+        "status": "OUT_OF_NETWORK_PENDING_AUTH",
+        "matched_specialist_id": "SPC-202",
+        "timestamp": "2026-09-07T12:03:51.246353+00:00",
+        "llm_mode": "live",
+        "llm_provider": "groq",
+        "policy_decision": {
+          "llm_mode": "live",
+          "llm_provider": "groq"
+        }
+      }
+    ]
+  },
+  {
+    "ac_id": "AC-02",
+    "timestamp": "2026-09-07T12:03:57.655223+00:00",
+    "thread_id": "thread-ac-03-inelig",
+    "referral_id": "REF-1004",
+    "final_status": "INELIGIBLE",
+    "trajectory": [
+      {
+        "step": "SUPERVISOR",
+        "decision": {
+          "next_agent": "intake",
+          "action_reason": "The referral is in the NEW state and has not yet undergone eligibility checks. The next logical step is to collect intake information from the patient. This follows the required workflow and does not skip the eligibility stage.",
+          "requires_reflection": false,
+          "confidence": 1.0
+        },
+        "timestamp": "2026-09-07T12:03:51.684608+00:00",
+        "llm_mode": "live",
+        "llm_provider": "groq"
+      },
+      {
+        "step": "INTAKE_AGENT",
+        "status": "INTAKE_COMPLETE",
+        "timestamp": "2026-09-07T12:03:54.945039+00:00",
+        "injection_flag": false,
+        "llm_mode": "live",
+        "llm_provider": "groq"
+      },
+      {
+        "step": "ELIGIBILITY_AGENT",
+        "status": "INELIGIBLE",
+        "is_eligible": false,
+        "timestamp": "2026-09-07T12:03:57.653857+00:00",
+        "llm_mode": "live",
+        "llm_provider": "groq"
+      }
+    ]
+  },
+  {
+    "ac_id": "AC-02",
+    "timestamp": "2026-09-07T12:04:20.797546+00:00",
+    "thread_id": "thread-pause-resume-test-101",
+    "referral_id": "REF-1001",
+    "final_status": "SCHEDULED",
+    "trajectory": [
+      {
+        "step": "SUPERVISOR",
+        "decision": {
+          "next_agent": "intake",
+          "action_reason": "The referral is in the NEW state and has not yet undergone eligibility checks. The next logical step is to collect intake information from the patient. This follows the required workflow and does not skip the eligibility stage.",
+          "requires_reflection": false,
+          "confidence": 1.0
+        },
+        "timestamp": "2026-09-07T12:04:02.937975+00:00",
+        "llm_mode": "live",
+        "llm_provider": "groq"
+      },
+      {
+        "step": "INTAKE_AGENT",
+        "status": "INTAKE_COMPLETE",
+        "timestamp": "2026-09-07T12:04:07.808254+00:00",
+        "injection_flag": false,
+        "llm_mode": "live",
+        "llm_provider": "groq"
+      },
+      {
+        "step": "ELIGIBILITY_AGENT",
+        "status": "ELIGIBLE",
+        "is_eligible": true,
+        "timestamp": "2026-09-07T12:04:09.419217+00:00",
+        "llm_mode": "live",
+        "llm_provider": "groq"
+      },
+      {
+        "step": "MATCHING_AGENT",
+        "status": "MATCHED",
+        "matched_specialist_id": "SPC-201",
+        "timestamp": "2026-09-07T12:04:18.270982+00:00",
+        "llm_mode": "live",
+        "llm_provider": "groq",
+        "policy_decision": {
+          "llm_mode": "live",
+          "llm_provider": "groq"
+        }
+      },
+      {
+        "step": "SCHEDULING_AGENT",
+        "status": "SCHEDULED",
+        "booking_id": "BOOK-19B2593A",
+        "slot": "2026-09-10T09:00:00Z",
+        "timestamp": "2026-09-07T12:04:20.795904+00:00",
+        "llm_mode": "live",
+        "llm_provider": "groq"
+      }
+    ]
+  },
+  {
+    "ac_id": "AC-02",
+    "timestamp": "2026-09-07T12:04:51.014963+00:00",
+    "thread_id": "evidence-checkpoint-thread",
+    "referral_id": "REF-1001",
+    "final_status": "SCHEDULED",
+    "trajectory": [
+      {
+        "step": "SUPERVISOR",
+        "decision": {
+          "next_agent": "intake",
+          "action_reason": "The referral is in the NEW state and has not yet undergone eligibility assessment. The next logical step is to collect intake information from the patient. This follows the required workflow and does not skip the eligibility stage.",
+          "requires_reflection": false,
+          "confidence": 1.0
+        },
+        "timestamp": "2026-09-07T12:04:30.461201+00:00",
+        "llm_mode": "live",
+        "llm_provider": "groq"
+      },
+      {
+        "step": "INTAKE_AGENT",
+        "status": "INTAKE_COMPLETE",
+        "timestamp": "2026-09-07T12:04:33.687325+00:00",
+        "injection_flag": false,
+        "llm_mode": "live",
+        "llm_provider": "groq"
+      },
+      {
+        "step": "ELIGIBILITY_AGENT",
+        "status": "ELIGIBLE",
+        "is_eligible": true,
+        "timestamp": "2026-09-07T12:04:36.559929+00:00",
+        "llm_mode": "live",
+        "llm_provider": "groq"
+      },
+      {
+        "step": "MATCHING_AGENT",
+        "status": "MATCHED",
+        "matched_specialist_id": "SPC-201",
+        "timestamp": "2026-09-07T12:04:49.439379+00:00",
+        "llm_mode": "live",
+        "llm_provider": "groq",
+        "policy_decision": {
+          "llm_mode": "live",
+          "llm_provider": "groq"
+        }
+      },
+      {
+        "step": "SCHEDULING_AGENT",
+        "status": "SCHEDULED",
+        "booking_id": "BOOK-0DB5A9B9",
+        "slot": "2026-09-10T09:00:00Z",
+        "timestamp": "2026-09-07T12:04:51.013269+00:00",
+        "llm_mode": "live",
+        "llm_provider": "groq"
+      }
+    ]
+  },
+  {
+    "ac_id": "AC-02",
+    "timestamp": "2026-09-07T12:05:21.224708+00:00",
+    "thread_id": "demo-thread-REF-1001",
+    "referral_id": "REF-1001",
+    "final_status": "SCHEDULED",
+    "trajectory": [
+      {
+        "step": "SUPERVISOR",
+        "decision": {
+          "next_agent": "intake",
+          "action_reason": "The referral is in the NEW state and has not yet been processed. The correct next step is to collect initial information from the user, so we route to the intake agent.",
+          "requires_reflection": false,
+          "confidence": 1.0
+        },
+        "timestamp": "2026-09-07T12:05:00.354619+00:00",
+        "llm_mode": "live",
+        "llm_provider": "groq"
+      },
+      {
+        "step": "INTAKE_AGENT",
+        "status": "INTAKE_COMPLETE",
+        "timestamp": "2026-09-07T12:05:01.260100+00:00",
+        "injection_flag": false,
+        "llm_mode": "live",
+        "llm_provider": "groq"
+      },
+      {
+        "step": "ELIGIBILITY_AGENT",
+        "status": "ELIGIBLE",
+        "is_eligible": true,
+        "timestamp": "2026-09-07T12:05:04.013370+00:00",
+        "llm_mode": "live",
+        "llm_provider": "groq"
+      },
+      {
+        "step": "MATCHING_AGENT",
+        "status": "MATCHED",
+        "matched_specialist_id": "SPC-201",
+        "timestamp": "2026-09-07T12:05:19.781142+00:00",
+        "llm_mode": "live",
+        "llm_provider": "groq",
+        "policy_decision": {
+          "llm_mode": "live",
+          "llm_provider": "groq"
+        }
+      },
+      {
+        "step": "SCHEDULING_AGENT",
+        "status": "SCHEDULED",
+        "booking_id": "BOOK-B0F59A5A",
+        "slot": "2026-09-10T09:00:00Z",
+        "timestamp": "2026-09-07T12:05:21.222944+00:00",
+        "llm_mode": "live",
+        "llm_provider": "groq"
+      }
+    ]
+  }
+]

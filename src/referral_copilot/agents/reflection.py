@@ -29,9 +29,32 @@ def reflection_agent_node(state: ReferralState) -> ReferralState:
     curr_status = state.get("status", "UNKNOWN")
     max_retries = settings.max_retries
 
+    recovery = {
+        "UNABLE_TO_MATCH": {
+            "action_code": "RETRY_MATCHING",
+            "next_agent": "matching",
+            "proposed_action": "Expand search radius and retry matching with secondary in-network providers.",
+            "failure_reason": "No suitable specialist was available for the requested referral specialty.",
+        },
+        "UNABLE_TO_SCHEDULE": {
+            "action_code": "RETRY_SCHEDULING",
+            "next_agent": "scheduling",
+            "proposed_action": "Query alternative appointment slots across partner clinics.",
+            "failure_reason": "The matched specialist did not return an available appointment slot.",
+        },
+    }.get(curr_status, {
+        "action_code": "RECHECK_INTAKE",
+        "next_agent": "intake",
+        "proposed_action": "Re-evaluate referral intake fields before retrying the workflow.",
+        "failure_reason": "The previous workflow step returned an unexpected recoverable status.",
+    })
+
     if retry_count > max_retries:
         fallback = ReflectionResult(
             needs_replan=False,
+            action_code="TERMINATE",
+            trigger_status=curr_status,
+            failure_reason=recovery["failure_reason"],
             proposed_action="TERMINATE_FAILED",
             reflection_notes=f"Exceeded maximum reflection retry threshold ({max_retries}). Halting loop.",
             retry_count=retry_count,
@@ -44,24 +67,24 @@ def reflection_agent_node(state: ReferralState) -> ReferralState:
             fallback=fallback,
         )
         state["reflection"] = result.model_dump()
+        state["reflection"].update({
+            "needs_replan": False,
+            "action_code": "TERMINATE",
+            "trigger_status": curr_status,
+            "failure_reason": recovery["failure_reason"],
+            "proposed_action": "TERMINATE_FAILED",
+            "reflection_notes": f"Reflection terminated after exceeding the maximum retry limit ({max_retries}) for status {curr_status}.",
+        })
         state["reflection"].update(live_status_log(live, llm_error))
         state["status"] = "FAILED"
         state["next_step"] = "end"
     else:
-        # Re-plan strategy based on failure status, with the model choosing the explanation.
-        if curr_status == "UNABLE_TO_MATCH":
-            proposed = "Expand search radius and retry matching with secondary in-network providers."
-            next_agent = "matching"
-        elif curr_status == "UNABLE_TO_SCHEDULE":
-            proposed = "Query alternative appointment slots across partner clinics."
-            next_agent = "scheduling"
-        else:
-            proposed = "Fallback to intake re-evaluation."
-            next_agent = "intake"
-
         fallback = ReflectionResult(
             needs_replan=True,
-            proposed_action=proposed,
+            action_code=recovery["action_code"],
+            trigger_status=curr_status,
+            failure_reason=recovery["failure_reason"],
+            proposed_action=recovery["proposed_action"],
             reflection_notes=f"Reflection Attempt {retry_count}: Initiating bounded self-healing recovery path.",
             retry_count=retry_count,
         )
@@ -73,8 +96,17 @@ def reflection_agent_node(state: ReferralState) -> ReferralState:
             fallback=fallback,
         )
         state["reflection"] = result.model_dump()
+        state["reflection"].update({
+            "needs_replan": True,
+            "action_code": recovery["action_code"],
+            "trigger_status": curr_status,
+            "failure_reason": recovery["failure_reason"],
+            "proposed_action": recovery["proposed_action"],
+            "reflection_notes": f"Recovery plan for {curr_status}: retry the referral workflow through {recovery['next_agent']}.",
+            "retry_count": retry_count,
+        })
         state["reflection"].update(live_status_log(live, llm_error))
-        state["next_step"] = next_agent
+        state["next_step"] = recovery["next_agent"]
 
     # Record Evidence Artifact for AC-12
     _record_reflection_evidence(state)

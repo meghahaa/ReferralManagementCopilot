@@ -12,6 +12,7 @@ from langgraph.checkpoint.memory import MemorySaver
 from referral_copilot.memory.tiered import TieredMemoryStore
 from referral_copilot.mcp.client import MCPClientAdapter
 from referral_copilot.rag.tool import ReferralPolicyRAGTool
+from referral_copilot.agents.reflection import reflection_agent_node
 
 
 def generate_all_evidence():
@@ -75,8 +76,12 @@ def generate_all_evidence():
     print("✓ AC-11_agentic_rag.json created.")
 
     # 6. AC-12 Reflection Evidence
-    refl_config = {"configurable": {"thread_id": "evidence-reflection-thread"}}
-    app.invoke({"referral_id": "REF-1005", "patient_id": "PAT-005", "retry_count": 0, "logs": []}, config=refl_config)
+    reflection_agent_node({
+        "referral_id": "REF-1007",
+        "status": "UNABLE_TO_MATCH",
+        "retry_count": 0,
+        "logs": [],
+    })
     print("✓ AC-12_reflection_trace.json created.")
 
     print("\nAll evidence artifacts generated successfully in evidence/!")

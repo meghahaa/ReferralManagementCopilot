@@ -150,7 +150,7 @@ auto-generated files     SQLite databases, caches, and Python bytecode; ignored 
 - **Live structured model calls:** workers use Pydantic schemas through the configured Gemini or Groq provider. Candidate IDs, appointment slots, eligibility, terminal statuses, and retry limits remain constrained by local rules and MCP results.
 - **MCP over stdio:** the adapter launches `src/referral_copilot/mcp/server.py` as a separate process. Compatible installations use `langchain-mcp-adapters`; the bundled SDK compatibility path still uses MCP initialization and JSON-RPC.
 - **SQLite:** satisfies local checkpointing and cross-session memory without an external database service.
-- **Lexical policy retrieval:** the current RAG tool is a small, deterministic local policy retriever, selected on demand by the matching worker; it is not presented as an embedding database.
+- **Vector policy retrieval:** the matching worker decides when to query a FAISS index built from Sentence-Transformers embeddings of local policy chunks.
 - **Synthetic-only scope:** this repository does not connect to EHRs, real schedulers, or production patient systems.
 
 Detailed rationale and operational guidance are in [docs/architecture.md](docs/architecture.md), [docs/deployment-runbook.md](docs/deployment-runbook.md), [docs/traceability-matrix.md](docs/traceability-matrix.md), and [docs/security/](docs/security/).

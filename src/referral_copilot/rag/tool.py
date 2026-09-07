@@ -6,6 +6,7 @@ Retrieved inside graph loops on demand.
 
 import json
 import re
+import faiss
 from datetime import datetime, timezone
 from typing import List, Dict, Any, Optional
 from pathlib import Path
@@ -21,7 +22,10 @@ class ReferralPolicyRAGTool:
         self.uploads_dir = self.data_dir / "uploads"
         self.evidence_dir = settings.evidence_dir
         self.documents: List[Dict[str, str]] = []
+        self.index = None
+        self.encoder = None
         self._load_documents()
+        self._build_index()
 
     def _load_documents(self) -> None:
         """Loads and chunks text policy files from data/uploads/."""
@@ -39,6 +43,22 @@ class ReferralPolicyRAGTool:
                     "text": sec
                 })
 
+    def _build_index(self) -> None:
+        """Build a cosine-similarity FAISS index over policy embeddings."""
+        if not self.documents:
+            return
+        from sentence_transformers import SentenceTransformer
+
+        self.encoder = SentenceTransformer(settings.embedding_model)
+        embeddings = self.encoder.encode(
+            [document["text"] for document in self.documents],
+            convert_to_numpy=True,
+            normalize_embeddings=True,
+            show_progress_bar=False,
+        ).astype("float32")
+        self.index = faiss.IndexFlatIP(embeddings.shape[1])
+        self.index.add(embeddings)
+
     def query_policy(self, query_text: str, top_k: int = 2) -> RAGQueryResult:
         """Performs on-demand policy lookup and relevance ranking.
 
@@ -49,24 +69,27 @@ class ReferralPolicyRAGTool:
         Returns:
             RAGQueryResult: Structured output containing retrieved chunks and source metadata.
         """
-        query_words = set(re.findall(r"\w+", query_text.lower()))
-
-        scored_chunks = []
-        for doc in self.documents:
-            doc_words = set(re.findall(r"\w+", doc["text"].lower()))
-            overlap = len(query_words.intersection(doc_words))
-            score = round(overlap / max(len(query_words), 1), 3)
-            if score > 0.05:
-                scored_chunks.append({
-                    "chunk_id": doc["chunk_id"],
-                    "source": doc["source"],
-                    "text": doc["text"],
-                    "relevance_score": score
+        if self.index is None or self.encoder is None:
+            top_chunks = []
+        else:
+            query_embedding = self.encoder.encode(
+                [query_text],
+                convert_to_numpy=True,
+                normalize_embeddings=True,
+                show_progress_bar=False,
+            ).astype("float32")
+            scores, indices = self.index.search(query_embedding, min(top_k, len(self.documents)))
+            top_chunks = []
+            for score, document_index in zip(scores[0], indices[0]):
+                if document_index < 0:
+                    continue
+                document = self.documents[document_index]
+                top_chunks.append({
+                    "chunk_id": document["chunk_id"],
+                    "source": document["source"],
+                    "text": document["text"],
+                    "relevance_score": round(float(score), 3),
                 })
-
-        # Sort by relevance score descending
-        scored_chunks.sort(key=lambda x: x["relevance_score"], reverse=True)
-        top_chunks = scored_chunks[:top_k]
 
         max_score = top_chunks[0]["relevance_score"] if top_chunks else 0.0
         primary_source = top_chunks[0]["source"] if top_chunks else "NO_MATCH"

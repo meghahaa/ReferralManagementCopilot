@@ -2,7 +2,7 @@
 
 from datetime import datetime, timezone
 from enum import Enum
-from typing import List, Optional, Dict, Any
+from typing import List, Optional, Dict, Any, Literal
 from pydantic import BaseModel, Field
 
 
@@ -143,6 +143,9 @@ class PolicyLookupDecision(BaseModel):
 class ReflectionResult(BaseModel):
     """Structured result from Reflection / Self-Healing Agent."""
     needs_replan: bool
+    action_code: Literal["RETRY_MATCHING", "RETRY_SCHEDULING", "RECHECK_INTAKE", "TERMINATE"] = "TERMINATE"
+    trigger_status: str = "UNKNOWN"
+    failure_reason: str = ""
     proposed_action: str
     reflection_notes: str
     retry_count: int = 0

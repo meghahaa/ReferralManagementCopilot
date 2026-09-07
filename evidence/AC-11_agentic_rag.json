@@ -1,22 +1,22 @@
 {
   "ac_id": "AC-11",
-  "timestamp": "2026-09-07T10:52:59.789246+00:00",
+  "timestamp": "2026-09-07T12:05:18.911670+00:00",
   "query": "Cardiology referral for hypertension management and echocardiogram evaluation",
-  "relevance_score": 0.5,
+  "relevance_score": 0.599,
   "policy_source": "cardiology_policy.txt",
   "chunks_count": 2,
   "retrieved_chunks": [
     {
-      "chunk_id": "cardiology_policy_chunk_2",
+      "chunk_id": "cardiology_policy_chunk_1",
       "source": "cardiology_policy.txt",
-      "text": "1. OVERVIEW\nThis policy outlines medical necessity and network referral criteria for adult Cardiology consults within Apex Health Network.",
-      "relevance_score": 0.5
+      "text": "CLINICAL POLICY DIRECTIVE: CARDIOLOGY REFERRALS & PRIOR AUTHORIZATION (POLICY-CARD-2026)",
+      "relevance_score": 0.599
     },
     {
       "chunk_id": "cardiology_policy_chunk_3",
       "source": "cardiology_policy.txt",
       "text": "2. ROUTINE CARDIOLOGY CONSULTATIONS\n- Indication: Essential hypertension resistant to 2+ anti-hypertensive medications, dyslipidemia with high ASCVD risk, mild stable angina.\n- Requirements: Completed primary care intake, baseline ECG within 60 days, serum creatinine, and lipid panel.\n- Prior Authorization: NOT required for routine in-network consults.",
-      "relevance_score": 0.5
+      "relevance_score": 0.561
     }
   ]
 }
