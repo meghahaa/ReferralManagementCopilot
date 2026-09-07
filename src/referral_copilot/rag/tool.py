@@ -83,6 +83,8 @@ class ReferralPolicyRAGTool:
             for score, document_index in zip(scores[0], indices[0]):
                 if document_index < 0:
                     continue
+                if float(score) < settings.rag_relevance_threshold:
+                    continue
                 document = self.documents[document_index]
                 top_chunks.append({
                     "chunk_id": document["chunk_id"],

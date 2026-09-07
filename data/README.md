@@ -26,7 +26,7 @@ data/
 ## Datasets Overview
 
 ### 1. `synthetic/referrals.json`
-Contains synthetic referral cases covering 8 major healthcare scenarios:
+Contains synthetic referral cases covering 11 healthcare scenarios:
 1. Normal in-network referral (`REF-1001`)
 2. Out-of-network referral requiring authorization (`REF-1002`)
 3. Urgent referral requiring expedited scheduling (`REF-1003`)
@@ -35,6 +35,9 @@ Contains synthetic referral cases covering 8 major healthcare scenarios:
 6. Referral requiring complex policy lookup (`REF-1006`)
 7. Referral requiring specialist matching (`REF-1007`)
 8. Referral requiring automated appointment scheduling (`REF-1008`)
+9. Urgent out-of-network referral (`REF-1009`)
+10. Unknown specialty that exercises bounded reflection failure (`REF-1010`)
+11. Policy-triggering referral with an untrusted instruction note (`REF-1011`)
 
 ### 2. `synthetic/patients.json`
 Synthetic patient demographics, insurance coverage, active plan details, and clinical history.

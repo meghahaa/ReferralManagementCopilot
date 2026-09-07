@@ -42,6 +42,12 @@ def reflection_agent_node(state: ReferralState) -> ReferralState:
             "proposed_action": "Query alternative appointment slots across partner clinics.",
             "failure_reason": "The matched specialist did not return an available appointment slot.",
         },
+        "TOOL_FAILURE": {
+            "action_code": "RETRY_MATCHING",
+            "next_agent": "eligibility",
+            "proposed_action": "Retry the failed domain tool call after verifying the referral context.",
+            "failure_reason": "A domain tool failed during referral processing.",
+        },
     }.get(curr_status, {
         "action_code": "RECHECK_INTAKE",
         "next_agent": "intake",

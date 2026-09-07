@@ -12,9 +12,9 @@ The MCP server implemented in [server.py](file:///home/megha/Documents/Virtusa/C
    - Standard Input / Output JSON-RPC stream.
    - Used for zero-overhead local process communication between the LangGraph agent host and the MCP server process.
 
-2. **`SSE / HTTP` Transport (Production Remote Integration)**:
-   - Server-Sent Events over HTTP using `sse-starlette` and `uvicorn`.
-   - Used when exposing healthcare tools across separate microservice containers.
+Remote SSE/HTTP transport is not currently implemented. The supported and tested
+transport is local stdio; remote deployment would require a separate MCP HTTP
+server and authentication design.
 
 ---
 

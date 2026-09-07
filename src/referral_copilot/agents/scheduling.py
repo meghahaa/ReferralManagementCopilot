@@ -27,7 +27,19 @@ def scheduling_agent_node(state: ReferralState) -> ReferralState:
     urgency = (state.get("referral") or {}).get("urgency", "ROUTINE")
 
     mcp_client = MCPClientAdapter()
-    avail_res = mcp_client.invoke_specialist_availability(specialist_id=spec_id)
+    try:
+        avail_res = mcp_client.invoke_specialist_availability(specialist_id=spec_id)
+    except Exception as exc:
+        state["status"] = "TOOL_FAILURE"
+        state["error_message"] = f"Availability lookup failed: {type(exc).__name__}"
+        state["next_step"] = "reflection"
+        state["logs"] = [{
+            "step": "SCHEDULING_AGENT",
+            "status": "TOOL_FAILURE",
+            "tool": "specialist_availability",
+            "timestamp": datetime.now(timezone.utc).isoformat(),
+        }]
+        return state
 
     slots = avail_res.get("available_slots", [])
 

@@ -5,7 +5,7 @@ A single monolithic prompt lacks domain isolation and deterministic control acro
 We chose a **Supervisor-Worker Multi-Agent Architecture** on **LangGraph**:
 - **Supervisor Orchestrator**: Evaluates high-level case state and routes execution dynamically.
 - **Domain Worker Specialist Nodes**: Separate concerns into discrete, testable nodes (`intake`, `eligibility`, `matching`, `scheduling`, `reflection`).
-- **Deterministic Edge Routing**: Enforces hard compliance rules (e.g. immediate rejection on expired insurance coverage, prior-authorization requirement on out-of-network requests) without relying on LLM guesswork.
+- **State-driven Edge Routing**: Routes based on authoritative worker results, including expired coverage, out-of-network matches, policy retrieval, and bounded recovery outcomes.
 
 ## 2. System Architecture Diagram
 
@@ -46,3 +46,12 @@ graph TD
 - Resource: `referral-policy://cardiology`.
 - Consumed via `MCPClientAdapter` with committed evidence logs.
 - The adapter launches `server.py` as a local stdio MCP subprocess. Compatible installations use `langchain-mcp-adapters`; the vendored SDK has a protocol-level fallback so offline execution still uses MCP JSON-RPC rather than direct function imports.
+
+## 7. Known Limitations
+
+- The repository uses synthetic data only and has no EHR or production scheduling integration.
+- MCP transport is local stdio; remote SSE/HTTP transport is not implemented.
+- FAISS and the Sentence-Transformers model are built locally at runtime and are not a hosted vector service.
+- SQLite persistence is local and does not provide multi-user isolation or distributed locking.
+- Model outputs are constrained by schemas, authoritative MCP results, quarantine, and retry limits; they are not clinical decisions.
+- The application has no authentication and is not a production healthcare transaction system.

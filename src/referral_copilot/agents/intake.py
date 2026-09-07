@@ -71,7 +71,7 @@ def intake_agent_node(state: ReferralState) -> ReferralState:
     if missing_fields:
         state["status"] = "NEEDS_INFO"
         state["error_message"] = f"Missing required intake fields: {', '.join(missing_fields)}"
-        state["next_step"] = "end"
+        state["next_step"] = "intake"
     else:
         state["status"] = "INTAKE_COMPLETE"
         state["next_step"] = "eligibility"

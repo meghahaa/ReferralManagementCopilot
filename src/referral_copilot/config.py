@@ -35,6 +35,7 @@ class Settings:
         self.memory_db_path: Path = BASE_DIR / os.getenv("MEMORY_DB_PATH", "data/memory.db")
         self.vector_store_dir: Path = BASE_DIR / os.getenv("VECTOR_STORE_DIR", "data/vector_store")
         self.embedding_model: str = os.getenv("EMBEDDING_MODEL", "sentence-transformers/all-MiniLM-L6-v2")
+        self.rag_relevance_threshold: float = float(os.getenv("RAG_RELEVANCE_THRESHOLD", "0.35"))
         self.data_dir: Path = BASE_DIR / os.getenv("DATA_DIR", "data")
         self.evidence_dir: Path = BASE_DIR / os.getenv("EVIDENCE_DIR", "evidence")
 

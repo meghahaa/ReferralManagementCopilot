@@ -22,7 +22,7 @@ This document defines the evaluation methodology, metrics, and automated benchma
 
 ## 2. Benchmark Datasets
 
-- **Golden Reference Set**: Located in [golden_set.jsonl](file:///home/megha/Documents/Virtusa/Capstone2/ReferralManagementCopilot/data/golden/golden_set.jsonl), containing ground truth expected outcomes across 8 representative referral scenarios:
+- **Golden Reference Set**: Located in [golden_set.jsonl](file:///home/megha/Documents/Virtusa/Capstone2/ReferralManagementCopilot/data/golden/golden_set.jsonl), containing ground truth expected outcomes across 11 representative referral scenarios:
   1. Routine In-Network Referral (`REF-1001`) $\rightarrow$ `SCHEDULED`
   2. Out-of-Network Referral (`REF-1002`) $\rightarrow$ `OUT_OF_NETWORK_PENDING_AUTH`
   3. Urgent Referral (`REF-1003`) $\rightarrow$ `EXPEDITED_SCHEDULED`

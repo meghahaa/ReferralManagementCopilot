@@ -22,7 +22,19 @@ def eligibility_agent_node(state: ReferralState) -> ReferralState:
     pat_id = state.get("patient_id") or (state.get("patient") or {}).get("patient_id", "PAT-001")
     mcp_client = MCPClientAdapter()
 
-    elig_res = mcp_client.invoke_eligibility_check(patient_id=pat_id)
+    try:
+        elig_res = mcp_client.invoke_eligibility_check(patient_id=pat_id)
+    except Exception as exc:
+        state["status"] = "TOOL_FAILURE"
+        state["error_message"] = f"Eligibility lookup failed: {type(exc).__name__}"
+        state["next_step"] = "reflection"
+        state["logs"] = [{
+            "step": "ELIGIBILITY_AGENT",
+            "status": "TOOL_FAILURE",
+            "tool": "eligibility_check",
+            "timestamp": datetime.now(timezone.utc).isoformat(),
+        }]
+        return state
     fallback = EligibilityResult(
         patient_id=pat_id,
         is_eligible=bool(elig_res.get("is_eligible")),
