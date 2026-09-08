@@ -12,12 +12,12 @@ The Referral Management Copilot is designed with strict adherence to healthcare 
 ## 2. Data Isolation & Untrusted Text Quarantine
 
 Free-text notes submitted by external referring providers are treated as **untrusted data**.
-- **Quarantine Boundary**: Notes are processed by [quarantine.py](file:///home/megha/Documents/Virtusa/Capstone2/ReferralManagementCopilot/src/referral_copilot/context/quarantine.py) and enclosed within `<UNTRUSTED_REFERRING_PROVIDER_NOTE>` tags.
+- **Quarantine Boundary**: Notes are processed by [quarantine.py](../src/referral_copilot/context/quarantine.py) and enclosed within `<UNTRUSTED_REFERRING_PROVIDER_NOTE>` tags.
 - **Prompt Injection Defense**: Explicit system instructions prevent the LLM from executing commands or instruction overrides contained within provider notes.
 
 ---
 
 ## 3. Auditability & Evidence Traceability
 
-- Every execution step, tool call, MCP invocation, RAG query, and graph transition generates structured, deterministic JSON trace evidence in [evidence/](file:///home/megha/Documents/Virtusa/Capstone2/ReferralManagementCopilot/evidence/).
+- Every execution step, tool call, MCP invocation, RAG query, and graph transition generates structured, deterministic JSON trace evidence in [evidence/](../evidence/).
 - No secrets, credentials, or real patient identifiers are logged.

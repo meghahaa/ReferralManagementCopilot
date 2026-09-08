@@ -28,7 +28,8 @@ class Settings:
         # Model hyperparameters
         self.temperature: float = float(os.getenv("LLM_TEMPERATURE", "0.0"))
         self.timeout: int = int(os.getenv("LLM_TIMEOUT", "30"))
-        self.max_retries: int = int(os.getenv("LLM_MAX_RETRIES", "3"))
+        self.llm_api_retries: int = int(os.getenv("LLM_API_RETRIES", "3"))
+        self.reflection_max_retries: int = int(os.getenv("REFLECTION_MAX_RETRIES", "3"))
 
         # Paths
         self.checkpoint_db_path: Path = BASE_DIR / os.getenv("CHECKPOINT_DB_PATH", "data/checkpoints.db")

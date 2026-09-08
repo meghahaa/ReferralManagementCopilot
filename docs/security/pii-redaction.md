@@ -18,6 +18,6 @@ This document defines the PII/PHI sanitization and synthetic data policy across 
 
 ## 2. Redaction & Logging Controls
 
-1. **Structured Trace Filtering**: Log outputs in [evidence/](file:///home/megha/Documents/Virtusa/Capstone2/ReferralManagementCopilot/evidence/) serialize synthetic identifiers only (`PAT-001`, `REF-1001`).
+1. **Structured Trace Filtering**: Log outputs in [evidence/](../evidence/) serialize synthetic identifiers only (`PAT-001`, `REF-1001`).
 2. **Quarantine Isolation**: Untrusted free-text referring-provider notes are isolated to prevent un-redacted user text from contaminating trusted LLM system instructions.
-3. **Database Privacy**: Local SQLite databases (`data/checkpoints.db`, `data/memory.db`) store synthetic referral state and are excluded from git tracking in [.gitignore](file:///home/megha/Documents/Virtusa/Capstone2/ReferralManagementCopilot/.gitignore).
+3. **Database Privacy**: Local SQLite databases (`data/checkpoints.db`, `data/memory.db`) store synthetic referral state and are excluded from git tracking in [.gitignore](../.gitignore).

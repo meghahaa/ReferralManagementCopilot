@@ -7,7 +7,6 @@ from datetime import datetime, timezone
 from referral_copilot.graph.state import ReferralState
 from referral_copilot.models.schemas import AgentDecision
 from referral_copilot.llm.runtime import invoke_structured, live_status_log
-from referral_copilot.context.summarizer import compress_context
 
 
 def supervisor_agent_node(state: ReferralState) -> ReferralState:
@@ -21,8 +20,6 @@ def supervisor_agent_node(state: ReferralState) -> ReferralState:
     """
     status = state.get("status", "NEW")
     current_next = state.get("next_step")
-    compress_context(state)
-
     # Initial routing logic
     if not current_next or status == "NEW":
         target_agent = "intake"
@@ -47,7 +44,7 @@ def supervisor_agent_node(state: ReferralState) -> ReferralState:
     allowed = {"intake", "eligibility", "matching", "scheduling", "reflection", "end"}
     if decision.next_agent.lower() not in allowed:
         decision = fallback
-    if status in {"INELIGIBLE", "INTAKE_INCOMPLETE", "OUT_OF_NETWORK_PENDING_AUTH", "SCHEDULED", "EXPEDITED_SCHEDULED", "FAILED"}:
+    if status in {"INELIGIBLE", "INTAKE_INCOMPLETE", "NEEDS_INFO", "OUT_OF_NETWORK_PENDING_AUTH", "SCHEDULED", "EXPEDITED_SCHEDULED", "FAILED", "POLICY_LOOKUP_COMPLETE"}:
         decision = fallback
 
     state["current_step"] = "SUPERVISOR"

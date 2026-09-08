@@ -27,7 +27,7 @@ def reflection_agent_node(state: ReferralState) -> ReferralState:
     state["retry_count"] = retry_count
 
     curr_status = state.get("status", "UNKNOWN")
-    max_retries = settings.max_retries
+    max_retries = settings.reflection_max_retries
 
     recovery = {
         "UNABLE_TO_MATCH": {
@@ -55,7 +55,7 @@ def reflection_agent_node(state: ReferralState) -> ReferralState:
         "failure_reason": "The previous workflow step returned an unexpected recoverable status.",
     })
 
-    if retry_count > max_retries:
+    if retry_count >= max_retries:
         fallback = ReflectionResult(
             needs_replan=False,
             action_code="TERMINATE",

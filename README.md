@@ -83,7 +83,8 @@ Open `http://localhost:8501` when Streamlit starts.
 | `GROQ_MODEL` | No | Defaults to `llama-3.3-70b-versatile` |
 | `LLM_TEMPERATURE` | No | Model temperature, default `0.0` |
 | `LLM_TIMEOUT` | No | API timeout in seconds, default `30` |
-| `LLM_MAX_RETRIES` | No | Reflection/provider retry limit, default `3` |
+| `LLM_API_RETRIES` | No | Provider API retry count, default `3` |
+| `REFLECTION_MAX_RETRIES` | No | Referral recovery retry limit, default `3` |
 | `CHECKPOINT_DB_PATH` | No | SQLite graph checkpoint path |
 | `MEMORY_DB_PATH` | No | SQLite durable memory path |
 | `DATA_DIR` | No | Synthetic data and policy directory |
@@ -111,7 +112,7 @@ make test
 make evaluate
 ```
 
-`make test` runs the unit and integration suite. `make evaluate` runs the eight-case golden referral benchmark. The expected status contract is stored in `data/golden/golden_set.jsonl`.
+`make test` runs the unit and integration suite. `make evaluate` runs the 11-case golden referral benchmark. The expected status contract is stored in `data/golden/golden_set.jsonl`.
 
 To regenerate committed-style evidence artifacts:
 

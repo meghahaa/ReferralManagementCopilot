@@ -6,7 +6,7 @@ This document defines logging, structured tracing, and trajectory recording acro
 
 ## 1. Structured JSON Evidence Logging
 
-All major agent invocations, graph state transitions, MCP tool calls, and RAG lookups append structured JSON logs to [evidence/](file:///home/megha/Documents/Virtusa/Capstone2/ReferralManagementCopilot/evidence/):
+All major agent invocations, graph state transitions, MCP tool calls, and RAG lookups append structured JSON logs to [evidence/](../evidence/):
 
 - `AC-01_typed_state.json`: Graph state structure schema snapshot.
 - `AC-05_checkpointing.json`: State pause/resume thread state log.

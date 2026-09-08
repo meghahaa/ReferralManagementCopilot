@@ -9,16 +9,16 @@ Context engineering controls prompt assembly, context window management, and unt
 The system implements four core context strategies:
 
 1. **WRITE**:
-   - Structured domain facts (patient demographics, referral details, eligibility checks, specialist matches) are written explicitly to the shared graph state object `ReferralState` in [state.py](file:///home/megha/Documents/Virtusa/Capstone2/ReferralManagementCopilot/src/referral_copilot/graph/state.py).
+   - Structured domain facts (patient demographics, referral details, eligibility checks, specialist matches) are written explicitly to the shared graph state object `ReferralState` in [state.py](../src/referral_copilot/graph/state.py).
 
 2. **SELECT**:
    - Worker agents only inject necessary state variables into prompt templates rather than passing the full execution trajectory history.
 
 3. **COMPRESS**:
-   - The context summarization middleware in [summarizer.py](file:///home/megha/Documents/Virtusa/Capstone2/ReferralManagementCopilot/src/referral_copilot/context/summarizer.py) automatically compresses execution logs when trajectory depth exceeds threshold ($>5$ steps), preserving initial state and recent steps.
+   - The context summarization middleware in [summarizer.py](../src/referral_copilot/context/summarizer.py) automatically compresses execution logs when trajectory depth exceeds threshold ($>5$ steps), preserving initial state and recent steps.
 
 4. **ISOLATE**:
-   - Raw free-text referring-provider notes are isolated via [quarantine.py](file:///home/megha/Documents/Virtusa/Capstone2/ReferralManagementCopilot/src/referral_copilot/context/quarantine.py).
+   - Raw free-text referring-provider notes are isolated via [quarantine.py](../src/referral_copilot/context/quarantine.py).
 
 ---
 
@@ -38,5 +38,5 @@ The system implements four core context strategies:
 
 ## 3. Verification & Evidence
 
-- Quarantining is verified in [test_nfr_03_quarantine.py](file:///home/megha/Documents/Virtusa/Capstone2/ReferralManagementCopilot/tests/test_nfr_03_quarantine.py).
-- Context compression middleware is verified in [test_nfr_08_summarization.py](file:///home/megha/Documents/Virtusa/Capstone2/ReferralManagementCopilot/tests/test_nfr_08_summarization.py).
+- Quarantining is verified in [test_nfr_03_quarantine.py](../tests/test_nfr_03_quarantine.py).
+- Context compression middleware is verified in [test_nfr_08_summarization.py](../tests/test_nfr_08_summarization.py).

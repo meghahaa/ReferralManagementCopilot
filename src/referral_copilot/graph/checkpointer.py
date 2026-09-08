@@ -20,12 +20,10 @@ def get_sqlite_checkpointer(db_path: Path = None):
     target_path = db_path or settings.checkpoint_db_path
     target_path.parent.mkdir(parents=True, exist_ok=True)
 
-    try:
-        from langgraph.checkpoint.sqlite import SqliteSaver
-        import sqlite3
-        conn = sqlite3.connect(str(target_path), check_same_thread=False)
-        return SqliteSaver(conn)
-    except Exception as e:
-        # Fallback to MemorySaver if SQLite saver unavailable
-        from langgraph.checkpoint.memory import MemorySaver
-        return MemorySaver()
+    from langgraph.checkpoint.sqlite import SqliteSaver
+    import sqlite3
+
+    conn = sqlite3.connect(str(target_path), check_same_thread=False)
+    checkpointer = SqliteSaver(conn)
+    checkpointer.setup()
+    return checkpointer

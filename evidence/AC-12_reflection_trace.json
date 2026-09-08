@@ -1,6 +1,6 @@
 {
   "ac_id": "AC-12",
-  "timestamp": "2026-09-07T16:30:41.252557+00:00",
+  "timestamp": "2026-09-08T17:06:47.790723+00:00",
   "referral_id": "REF-1007",
   "status": "UNABLE_TO_MATCH",
   "retry_count": 1,
@@ -12,8 +12,8 @@
     "proposed_action": "Expand search radius and retry matching with secondary in-network providers.",
     "reflection_notes": "Recovery plan for UNABLE_TO_MATCH: retry the referral workflow through matching.",
     "retry_count": 1,
-    "llm_mode": "fallback",
-    "llm_error": "RateLimitError: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01k850f2mdfv2rpehk928ts077` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199548, Requested 655. Please try again in 1m27.696s. Need more tokens? Upg"
+    "llm_mode": "live",
+    "llm_provider": "groq"
   },
   "next_step": "matching"
 }

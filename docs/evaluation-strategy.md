@@ -22,21 +22,24 @@ This document defines the evaluation methodology, metrics, and automated benchma
 
 ## 2. Benchmark Datasets
 
-- **Golden Reference Set**: Located in [golden_set.jsonl](file:///home/megha/Documents/Virtusa/Capstone2/ReferralManagementCopilot/data/golden/golden_set.jsonl), containing ground truth expected outcomes across 11 representative referral scenarios:
+- **Golden Reference Set**: Located in [golden_set.jsonl](../data/golden/golden_set.jsonl), containing ground truth expected outcomes across 11 representative referral scenarios:
   1. Routine In-Network Referral (`REF-1001`) $\rightarrow$ `SCHEDULED`
   2. Out-of-Network Referral (`REF-1002`) $\rightarrow$ `OUT_OF_NETWORK_PENDING_AUTH`
   3. Urgent Referral (`REF-1003`) $\rightarrow$ `EXPEDITED_SCHEDULED`
   4. Ineligible Referral (`REF-1004`) $\rightarrow$ `INELIGIBLE`
-  5. Incomplete Referral (`REF-1005`) $\rightarrow$ `INTAKE_INCOMPLETE`
+  5. Incomplete Referral (`REF-1005`) $\rightarrow$ `NEEDS_INFO`
   6. Policy Lookup (`REF-1006`) $\rightarrow$ `POLICY_LOOKUP_COMPLETE`
-  7. Specialist Match (`REF-1007`) $\rightarrow$ `MATCHED`
+  7. Generic In-Network Scheduling (`REF-1007`) $\rightarrow$ `SCHEDULED`
   8. Appointment Scheduling (`REF-1008`) $\rightarrow$ `SCHEDULED`
+  9. Urgent Out-of-Network (`REF-1009`) $\rightarrow$ `OUT_OF_NETWORK_PENDING_AUTH`
+  10. Unknown Specialty Recovery (`REF-1010`) $\rightarrow$ `FAILED`
+  11. Quarantined Policy Lookup (`REF-1011`) $\rightarrow$ `POLICY_LOOKUP_COMPLETE`
 
 ---
 
 ## 3. Automated Evaluation Script
 
-The benchmark evaluation pipeline is implemented in [eval_pipeline.py](file:///home/megha/Documents/Virtusa/Capstone2/ReferralManagementCopilot/evals/eval_pipeline.py) and can be executed via:
+The benchmark evaluation pipeline is implemented in [eval_pipeline.py](../evals/eval_pipeline.py) and can be executed via:
 ```bash
 python evals/eval_pipeline.py
 ```

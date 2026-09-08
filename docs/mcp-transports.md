@@ -6,7 +6,7 @@ This document describes the transport mechanisms and adapter integration for the
 
 ## 1. Supported MCP Transports
 
-The MCP server implemented in [server.py](file:///home/megha/Documents/Virtusa/Capstone2/ReferralManagementCopilot/src/referral_copilot/mcp/server.py) supports two primary transport layers:
+The MCP server implemented in [server.py](../src/referral_copilot/mcp/server.py) supports two primary transport layers:
 
 1. **`stdio` Transport (Default for local CLI/Agent execution)**:
    - Standard Input / Output JSON-RPC stream.
@@ -20,13 +20,13 @@ server and authentication design.
 
 ## 2. Adapter Layer Integration
 
-The agent host consumes MCP tools through `langchain-mcp-adapters` wrapped in [client.py](file:///home/megha/Documents/Virtusa/Capstone2/ReferralManagementCopilot/src/referral_copilot/mcp/client.py). The adapter launches the custom server as a separate stdio process for every tool session:
+The agent host consumes MCP tools through `langchain-mcp-adapters` wrapped in [client.py](../src/referral_copilot/mcp/client.py). The adapter launches the custom server as a separate stdio process for every tool session:
 ```python
 # Invocation Pattern
 mcp_client = MCPClientAdapter()
 result = mcp_client.invoke_eligibility_check(patient_id="PAT-001")
 ```
 
-All invocations generate committed audit logs in [evidence/AC-10_mcp_invocation.json](file:///home/megha/Documents/Virtusa/Capstone2/ReferralManagementCopilot/evidence/AC-10_mcp_invocation.json).
+All invocations generate committed audit logs in [evidence/AC-10_mcp_invocation.json](../evidence/AC-10_mcp_invocation.json).
 
 The repository also contains a raw MCP SDK compatibility path because the bundled offline SDK may be older than the installed adapter package. This fallback still performs MCP initialization and JSON-RPC tool/resource calls over stdio; it does not import or call server tool functions directly.

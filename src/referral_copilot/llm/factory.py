@@ -50,7 +50,7 @@ def get_llm(
                 google_api_key=api_key,
                 temperature=temp,
                 timeout=settings.timeout,
-                max_retries=settings.max_retries,
+                max_retries=settings.llm_api_retries,
                 **kwargs
             )
         except ImportError:
@@ -77,7 +77,7 @@ def get_llm(
                 groq_api_key=api_key,
                 temperature=temp,
                 timeout=settings.timeout,
-                max_retries=settings.max_retries,
+                max_retries=settings.llm_api_retries,
                 **kwargs
             )
         except ImportError:

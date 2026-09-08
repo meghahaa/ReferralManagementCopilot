@@ -15,9 +15,10 @@ from referral_copilot.agents.eligibility import eligibility_agent_node
 from referral_copilot.agents.matching import matching_agent_node
 from referral_copilot.agents.scheduling import scheduling_agent_node
 from referral_copilot.agents.reflection import reflection_agent_node
-from referral_copilot.graph.router import route_next
+from referral_copilot.graph.router import route_after_context, route_from_supervisor
 from referral_copilot.graph.checkpointer import get_sqlite_checkpointer
 from referral_copilot.config import settings
+from referral_copilot.context.summarizer import compress_context
 
 
 class EvidenceGraph:
@@ -56,6 +57,11 @@ class EvidenceGraph:
         return getattr(self._graph, name)
 
 
+def context_compression_node(state: ReferralState) -> ReferralState:
+    """Apply context compression between worker cycles and supervisor decisions."""
+    return compress_context(state)
+
+
 def build_referral_graph(checkpointer=None):
     """Constructs and compiles the Referral Copilot LangGraph workflow.
 
@@ -74,6 +80,7 @@ def build_referral_graph(checkpointer=None):
     workflow.add_node("matching", matching_agent_node)
     workflow.add_node("scheduling", scheduling_agent_node)
     workflow.add_node("reflection", reflection_agent_node)
+    workflow.add_node("context_compression", context_compression_node)
 
     # Add Edges
     workflow.add_edge(START, "supervisor")
@@ -87,13 +94,12 @@ def build_referral_graph(checkpointer=None):
         "reflection": "reflection",
         "__end__": END
     }
+    context_routing_map = {"supervisor": "supervisor", "__end__": END}
 
-    workflow.add_conditional_edges("supervisor", route_next, routing_map)
-    workflow.add_conditional_edges("intake", route_next, routing_map)
-    workflow.add_conditional_edges("eligibility", route_next, routing_map)
-    workflow.add_conditional_edges("matching", route_next, routing_map)
-    workflow.add_conditional_edges("scheduling", route_next, routing_map)
-    workflow.add_conditional_edges("reflection", route_next, routing_map)
+    workflow.add_conditional_edges("supervisor", route_from_supervisor, routing_map)
+    for worker in ("intake", "eligibility", "matching", "scheduling", "reflection"):
+        workflow.add_edge(worker, "context_compression")
+    workflow.add_conditional_edges("context_compression", route_after_context, context_routing_map)
 
     cp = checkpointer if checkpointer is not None else get_sqlite_checkpointer()
     return EvidenceGraph(workflow.compile(checkpointer=cp))

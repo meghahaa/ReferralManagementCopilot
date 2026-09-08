@@ -21,7 +21,7 @@ def test_unknown_specialty_reaches_bounded_failure():
         config={"configurable": {"thread_id": "generalized-1010"}},
     )
     assert result["status"] == "FAILED"
-    assert result["retry_count"] == 4
+    assert result["retry_count"] == 3
 
 
 def test_policy_trigger_and_quarantine_are_data_driven():

@@ -43,6 +43,14 @@ class TieredMemoryStore:
             )
             """
         )
+        cursor.execute(
+            "DELETE FROM memory_facts WHERE rowid NOT IN "
+            "(SELECT MAX(rowid) FROM memory_facts GROUP BY category, key)"
+        )
+        cursor.execute(
+            "CREATE UNIQUE INDEX IF NOT EXISTS idx_memory_facts_logical_key "
+            "ON memory_facts(category, key)"
+        )
         conn.commit()
         conn.close()
 
@@ -68,6 +76,14 @@ class TieredMemoryStore:
                 fact_id, session_id, referral_id, category, key, value,
                 importance_score, created_at, last_accessed_at, access_count, ttl_seconds
             ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, 1, ?)
+            ON CONFLICT(category, key) DO UPDATE SET
+                session_id = excluded.session_id,
+                referral_id = excluded.referral_id,
+                value = excluded.value,
+                importance_score = excluded.importance_score,
+                last_accessed_at = excluded.last_accessed_at,
+                access_count = memory_facts.access_count + 1,
+                ttl_seconds = excluded.ttl_seconds
             """,
             (fact_id, session_id, referral_id, category, key, value, importance_score, now, now, ttl_seconds)
         )
@@ -85,12 +101,12 @@ class TieredMemoryStore:
 
         if session_id:
             cursor.execute(
-                "SELECT fact_id, session_id, category, key, value, importance_score, created_at FROM memory_facts WHERE key = ? AND session_id = ?",
+                "SELECT fact_id, session_id, category, key, value, importance_score, created_at FROM memory_facts WHERE key = ? AND session_id = ? ORDER BY last_accessed_at DESC LIMIT 1",
                 (key, session_id)
             )
         else:
             cursor.execute(
-                "SELECT fact_id, session_id, category, key, value, importance_score, created_at FROM memory_facts WHERE key = ?",
+                "SELECT fact_id, session_id, category, key, value, importance_score, created_at FROM memory_facts WHERE key = ? ORDER BY last_accessed_at DESC LIMIT 1",
                 (key,)
             )
 
@@ -125,9 +141,9 @@ class TieredMemoryStore:
         cursor = conn.cursor()
 
         if category:
-            cursor.execute("SELECT fact_id, session_id, category, key, value, importance_score FROM memory_facts WHERE category = ?", (category,))
+            cursor.execute("SELECT fact_id, session_id, category, key, value, importance_score FROM memory_facts WHERE category = ? ORDER BY last_accessed_at DESC", (category,))
         else:
-            cursor.execute("SELECT fact_id, session_id, category, key, value, importance_score FROM memory_facts")
+            cursor.execute("SELECT fact_id, session_id, category, key, value, importance_score FROM memory_facts ORDER BY last_accessed_at DESC")
 
         rows = cursor.fetchall()
         conn.close()

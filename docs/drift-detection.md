@@ -7,19 +7,18 @@ This document outlines strategies for detecting model behavior drift, schema dri
 ## 1. Types of Drift Monitored
 
 1. **Schema & Structured Handoff Drift**:
-   - Monitored by Pydantic model validation on node boundaries in [schemas.py](file:///home/megha/Documents/Virtusa/Capstone2/ReferralManagementCopilot/src/referral_copilot/models/schemas.py).
-   - If an LLM response fails structural parsing, validation errors trigger the bounded reflection loop in [reflection.py](file:///home/megha/Documents/Virtusa/Capstone2/ReferralManagementCopilot/src/referral_copilot/agents/reflection.py).
+   - Monitored by Pydantic model validation on node boundaries in [schemas.py](../src/referral_copilot/models/schemas.py).
+   - If an LLM response fails structural parsing, validation errors trigger the bounded reflection loop in [reflection.py](../src/referral_copilot/agents/reflection.py).
 
 2. **Routing & Topology Drift**:
-   - Monitored by evaluating supervisor decision metrics against the golden dataset in [golden_set.jsonl](file:///home/megha/Documents/Virtusa/Capstone2/ReferralManagementCopilot/data/golden/golden_set.jsonl).
-   - Expected status transitions (e.g., `INTAKE_COMPLETE` $\rightarrow$ `ELIGIBLE` $\rightarrow$ `MATCHED` $\rightarrow$ `SCHEDULED`) are verified deterministically.
+   - Monitored by evaluating supervisor decision metrics against the golden dataset in [golden_set.jsonl](../data/golden/golden_set.jsonl).
 
 3. **Data & Policy Drift**:
-   - Monitored by re-indexing clinical policy documents in [data/uploads/](file:///home/megha/Documents/Virtusa/Capstone2/ReferralManagementCopilot/data/uploads/) via `scripts/index_rag.py` when clinical directives are updated.
+   - Monitored by re-indexing clinical policy documents in [data/uploads/](../data/uploads/) via `scripts/index_rag.py` when clinical directives are updated.
 
 ---
 
 ## 2. Mitigation Controls
 
-- **Deterministic Fallbacks**: Crucial edge routing decisions (e.g. out-of-network status or expired insurance rejections) rely on deterministic Python functions in [router.py](file:///home/megha/Documents/Virtusa/Capstone2/ReferralManagementCopilot/src/referral_copilot/graph/router.py) rather than unconstrained model generation.
-- **Bounded Reflection**: Re-planning attempts are capped at 3 retries to prevent infinite agent loop execution.
+- **Authoritative facts**: Eligibility and specialist/network facts come from the MCP domain tools; model outputs are schema-validated and constrained against those facts.
+- **Bounded Reflection**: Recovery attempts are capped at `REFLECTION_MAX_RETRIES` (default `3`) to prevent infinite agent loop execution.

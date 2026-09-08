@@ -155,5 +155,7 @@ def matching_agent_node(state: ReferralState) -> ReferralState:
         "timestamp": datetime.now(timezone.utc).isoformat(),
         **(live_status_log(live, llm_error) if in_net else live_status_log(lookup_live, lookup_error)),
         "policy_decision": live_status_log(lookup_live, lookup_error),
+        "policy_lookup_requested": should_lookup,
+        "policy_lookup_model_decision": lookup_decision.model_dump(),
     }]
     return state

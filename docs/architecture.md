@@ -13,20 +13,20 @@ We chose a **Supervisor-Worker Multi-Agent Architecture** on **LangGraph**:
 graph TD
     Start[START] --> Supervisor[Supervisor Orchestrator]
     Supervisor -->|Check Intake| Intake[Intake Agent Node]
-    Intake -->|Valid Intake| Eligibility[Eligibility Check Node]
+    Supervisor -->|Valid Intake| Eligibility[Eligibility Check Node]
     Intake -->|Missing Fields| End[END - NEEDS_INFO]
-    Eligibility -->|Eligible| Matching[Specialist Matching Node]
+    Supervisor -->|Eligible| Matching[Specialist Matching Node]
     Eligibility -->|Ineligible| End[END - INELIGIBLE]
-    Matching -->|In-Network Match| Scheduling[Scheduling Node]
+    Supervisor -->|In-Network Match| Scheduling[Scheduling Node]
     Matching -->|Out-Of-Network| End[END - OUT_OF_NETWORK_PENDING_AUTH]
-    Matching -->|No Match| Reflection[Reflection Agent Node]
+    Supervisor -->|No Match| Reflection[Reflection Agent Node]
     Scheduling -->|Success| End[END - SCHEDULED / EXPEDITED]
-    Reflection -->|Re-plan| Matching
+    Reflection -->|Re-plan| Supervisor
     Reflection -->|Max Retries Exceeded| End[END - FAILED]
 ```
 
 ## 3. Live LLM Provider Architecture
-- Centralized Provider Factory (`src/referral_copilot/llm/factory.py`) reads `LLM_PROVIDER` from `.env`.
+- Centralized Provider Factory [factory.py](../src/referral_copilot/llm/factory.py) reads `LLM_PROVIDER` from `.env`.
 - Dynamic switching between `gemini` (Google Gemini) and `groq` (Groq API) via ONE configuration setting.
 - Worker nodes call `llm/runtime.py`, which requests validated Pydantic outputs from the configured provider.
 - With no usable key, each node uses an explicit domain-safe fallback and records `llm_mode: fallback`; a configured key always attempts a live call.

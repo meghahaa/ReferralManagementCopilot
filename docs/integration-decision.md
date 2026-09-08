@@ -19,4 +19,4 @@ This document documents the architectural rationale behind choosing Model Contex
 
 1. **Standardized Tooling**: MCP provides a unified specification for tools and resources, allowing any agent framework (LangGraph, AutoGen, CrewAI) to consume healthcare data sources seamlessly.
 2. **Schema & Validation**: MCP server definitions automatically expose typed input schemas, simplifying validation at tool invocation boundaries.
-3. **Decoupled Architecture**: The MCP server in [server.py](file:///home/megha/Documents/Virtusa/Capstone2/ReferralManagementCopilot/src/referral_copilot/mcp/server.py) runs as an independent component, protecting sensitive healthcare lookups behind clean API contracts.
+3. **Decoupled Architecture**: The MCP server in [server.py](../src/referral_copilot/mcp/server.py) runs as an independent component, protecting sensitive healthcare lookups behind clean API contracts.
